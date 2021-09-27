@@ -9,7 +9,7 @@ from wtforms.csrf.session import SessionCSRF
 from sqlalchemy import inspect, types
 
 
-class SessionCSRFMixin:
+class CSRFMixin:
     """
     Add CSRF to forms using the Flask session.
     """
