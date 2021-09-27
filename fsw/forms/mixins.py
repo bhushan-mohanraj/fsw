@@ -96,6 +96,13 @@ class ModelMixin:
             else:
                 field_kwargs["validators"] += [validators.Optional()]
 
+            if field_type is None:
+                raise RuntimeError(
+                    "The column type {} "
+                    "cannot currently be converted "
+                    "to a form field.".format(type(column.type))
+                )
+
             # Construct the field and add it to the form.
             setattr(
                 ModelForm,
