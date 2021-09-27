@@ -9,7 +9,11 @@ from wtforms.csrf.session import SessionCSRF
 from sqlalchemy import inspect, types
 
 
-class CSRFMixin:
+class SessionCSRFMixin:
+    """
+    Add CSRF to forms using the Flask session.
+    """
+
     class Meta:
         csrf = True
         csrf_class = SessionCSRF
@@ -22,6 +26,10 @@ DATETIME_LOCAL_FORMAT = "%Y-%m-%dT%H:%M"
 
 
 class ModelMixin:
+    """
+    Add a classmethod to create WTForms form classes from SQLAlchemy model classes.
+    """
+
     @classmethod
     def from_model(cls, model, exclude_names: list[str] = [], submit: bool = True):
         """
