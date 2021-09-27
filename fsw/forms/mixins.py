@@ -65,15 +65,20 @@ class ModelMixin:
                 field_kwargs["description"] = column.doc
 
             # Determine the field type.
-            if type(column.type) == types.Integer:
-                field_type = fields.IntegerField
-
-            elif type(column.type) == types.String:
+            if type(column.type) == types.String:
                 field_type = fields.StringField
 
                 field_kwargs["validators"] += [
                     validators.Length(max=column.type.length)
                 ]
+
+            elif type(column.type) == types.Integer:
+                field_type = fields.IntegerField
+
+            elif type(column.type) == types.DateTime:
+                field_type = html5.DateTimeLocalField
+
+                field_kwargs["format"] = DATETIME_LOCAL_FORMAT
 
             elif type(column.type) == types.Boolean:
                 field_type = fields.BooleanField
@@ -84,11 +89,6 @@ class ModelMixin:
                 field_kwargs["choices"] = [
                     (choice, choice.title()) for choice in column.type.enums
                 ]
-
-            elif type(column.type) == types.DateTime:
-                field_type = html5.DateTimeLocalField
-
-                field_kwargs["format"] = DATETIME_LOCAL_FORMAT
 
             # Add the input required or optional validator.
             if not column.nullable:
