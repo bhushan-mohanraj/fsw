@@ -35,8 +35,7 @@ def _column_field_type(column) -> type:
         return _column_field_types[type(column.type)]
 
     raise RuntimeError(
-        f"The {type(column.type)} column type "
-        "cannot be converted to a form field."
+        f"The {type(column.type)} column type cannot be converted to a form field."
     )
 
 
