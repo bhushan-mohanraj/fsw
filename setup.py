@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="fsw",
-    version="0.1.0",
+    version="0.1.1",
     author="Bhushan Mohanraj",
     description="Tools and guides for building apps with Flask, SQLAlchemy, and WTForms.",
     install_requires=[
