@@ -1,4 +1,4 @@
-import os
+import secrets
 
 from flask import session
 
@@ -13,5 +13,5 @@ class CSRFMixin:
     class Meta:
         csrf = True
         csrf_class = SessionCSRF
-        csrf_secret = os.urandom(32)
+        csrf_secret = secrets.token_hex()
         csrf_context = session
