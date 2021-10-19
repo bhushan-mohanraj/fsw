@@ -1,3 +1,7 @@
+# Version 0.1.1
+
+- Use `secrets.token_hex` instead of `os.urandom` in `CSRFMixin` for CSRF secret.
+
 # Version 0.1.0
 
 - Add `CSRFMixin` to add CSRF protection to WTForms forms.
