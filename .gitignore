@@ -1,5 +1,11 @@
+# Python
 venv/
-__pycache__
+__pycache__/
 
+# Editors
 .vscode/
 .idea/
+
+# Project
+dist/
+*.egg-info/
