@@ -18,5 +18,5 @@ setuptools.setup(
         "SQLAlchemy>=1.4,<2",
         "WTForms>=2.3,<3",
     ],
-    python_requires=">=3.6",
+    python_requires=">=3.9",
 )
