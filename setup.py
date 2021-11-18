@@ -6,7 +6,7 @@ readme_path = pathlib.Path(__file__).parent.resolve() / "README.md"
 
 setuptools.setup(
     name="fsw",
-    version="0.1.1",
+    version="0.2.0",
     description="Tools and guides for building apps with Flask, SQLAlchemy, and WTForms.",
     long_description=readme_path.read_text("utf-8"),
     long_description_content_type="text/markdown",
