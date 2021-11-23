@@ -16,3 +16,4 @@ If a user wants to add extra fields to the model form, these fields are after th
 Maybe, add a `ModelMixin.add_submit_field` classmethod instead.
 - Add templates with macros like `render_fields` from `lawrenceville-math`.
 - Create guides about migrations and commands with `click`.
+- When implementing CRUD views, use `request.view_args` instead of `**kwargs` for clarity.
