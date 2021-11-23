@@ -1,5 +1,10 @@
 # Changes
 
+## Version 0.2.1
+
+- Add back `IDMixin` and `ClassNameMixin`.
+- Add `__init__.py` to fix package bug.
+
 ## Version 0.2.0
 
 - Add `CRUDMixin` for models.
