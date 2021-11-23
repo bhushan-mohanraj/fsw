@@ -1,5 +1,9 @@
 # Changes
 
+## Version 0.2.2
+
+- Add `__init__.py` files for packages.
+
 ## Version 0.2.1
 
 - Add back `IDMixin` and `ClassNameMixin`.
