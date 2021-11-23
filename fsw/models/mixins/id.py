@@ -1,7 +1,4 @@
-from sqlalchemy import (
-    Column,
-    types,
-)
+from sqlalchemy import types, Column
 
 
 class IDMixin:

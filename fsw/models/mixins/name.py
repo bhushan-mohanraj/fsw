@@ -1,6 +1,4 @@
-from sqlalchemy.orm import (
-    declared_attr,
-)
+from sqlalchemy.orm import declared_attr 
 
 
 class ClassNameMixin:
