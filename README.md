@@ -14,3 +14,5 @@ FSW is a collection of tools and guides for building apps with Flask, SQLAlchemy
 - Automatically adding a submit field in `ModelMixin.from_model` is problematic.
 If a user wants to add extra fields to the model form, these fields are after the submit field.
 Maybe, add a `ModelMixin.add_submit_field` classmethod instead.
+- Add templates with macros like `render_fields` from `lawrenceville-math`.
+- Create guides about migrations and commands with `click`.
