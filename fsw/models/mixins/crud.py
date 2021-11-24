@@ -10,7 +10,7 @@ from sqlalchemy import select
 
 class _CRUDBaseMixin:
     """
-    A base class for the CRUD mixins.
+    The base class for CRUD mixins.
     """
 
     session = None
