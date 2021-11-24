@@ -12,7 +12,7 @@
 ## Version 0.2.0
 
 - Add `CRUDMixin` for models.
-- Remove `IdMixin` and `ClassNameMixin`.
+- Remove `IDMixin` and `ClassNameMixin`.
 
 ## Version 0.1.1
 
