@@ -17,3 +17,4 @@ Maybe, add a `ModelMixin.add_submit_field` classmethod instead.
 - Add templates with macros like `render_fields` from `lawrenceville-math`.
 - Create guides about migrations and commands with `click`.
 - When implementing CRUD views, use `request.view_args` instead of `**kwargs` for clarity.
+- Extract `_CRUDBaseMixin._fill` to a separate helper function `_fill`.
