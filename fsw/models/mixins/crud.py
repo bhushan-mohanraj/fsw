@@ -8,7 +8,7 @@ This attribute should be set to the SQLAlchemy database session or scoped sessio
 from sqlalchemy import select
 
 
-class _CRUDBaseMixin:
+class _BaseCRUDMixin:
     """
     The base class for CRUD mixins.
     """
@@ -31,7 +31,7 @@ class _CRUDBaseMixin:
             setattr(self, key, value)
 
 
-class CreateMixin(_CRUDBaseMixin):
+class CreateMixin(_BaseCRUDMixin):
     """
     Add a `create` class method to create new model objects.
     """
@@ -51,7 +51,7 @@ class CreateMixin(_CRUDBaseMixin):
         return instance
 
 
-class ReadMixin(_CRUDBaseMixin):
+class ReadMixin(_BaseCRUDMixin):
     """
     Add `read` and `read_one` class methods to read model objects.
     """
@@ -95,7 +95,7 @@ class ReadMixin(_CRUDBaseMixin):
         return cls.session.execute(statement).scalars().first()
 
 
-class UpdateMixin(_CRUDBaseMixin):
+class UpdateMixin(_BaseCRUDMixin):
     """
     Add an `update` method to update the model object.
     """
@@ -112,7 +112,7 @@ class UpdateMixin(_CRUDBaseMixin):
         return self
 
 
-class DeleteMixin(_CRUDBaseMixin):
+class DeleteMixin(_BaseCRUDMixin):
     """
     Add a `delete` method to delete the model object.
     """
