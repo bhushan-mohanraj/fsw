@@ -9,28 +9,15 @@ import warnings
 
 from sqlalchemy import select
 
+from fsw.helpers import _fill
+
 
 class _BaseCRUDMixin:
     """
     The base class for CRUD mixins.
     """
 
-    session = None
-
-    def _fill(self, **kwargs):
-        """
-        Fill the attributes of the current instance with the given keyword arguments.
-
-        Raise an error if a given keyword argument is not an actual attribute.
-        """
-
-        for key, value in kwargs.items():
-            if not hasattr(self, key):
-                warnings.warn(
-                    f"An instance of '{type(self).__name__}' has no attribute '{key}.'"
-                )
-
-            setattr(self, key, value)
+    session = None  # The SQLAlchemy database session or scoped session.
 
 
 class CreateMixin(_BaseCRUDMixin):
@@ -45,7 +32,8 @@ class CreateMixin(_BaseCRUDMixin):
         """
 
         instance = cls()
-        instance._fill(**kwargs)
+        
+        _fill(instance, **kwargs)
 
         cls.session.add(instance)
         cls.session.commit()
@@ -107,7 +95,7 @@ class UpdateMixin(_BaseCRUDMixin):
         Update and save the current model instance using the keyword arguments.
         """
 
-        self._fill(**kwargs)
+        _fill(self, **kwargs)
 
         self.session.commit()
 
