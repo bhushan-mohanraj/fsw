@@ -1,5 +1,5 @@
 """
-Mixins for creating, reading, updating, and deleting model objects.
+Mixins for creating, reading, updating, and deleting model instances.
 
 These mixins require that the `session` attribute exists on the model class.
 This attribute should be set to the SQLAlchemy database session or scoped session.
@@ -17,7 +17,7 @@ class _BaseCRUDMixin:
 
     def _fill(self, **kwargs):
         """
-        Fill the attributes of the object with the given keyword arguments.
+        Fill the attributes of the current instance with the given keyword arguments.
 
         Raise an error if a given keyword argument is not an actual attribute.
         """
@@ -25,7 +25,7 @@ class _BaseCRUDMixin:
         for key, value in kwargs.items():
             if not hasattr(self, key):
                 raise AttributeError(
-                    f"'{type(self).__name__}' object has no attribute '{key}'"
+                    f"An instance of '{type(self).__name__}' has no attribute '{key}.'"
                 )
 
             setattr(self, key, value)
@@ -33,13 +33,13 @@ class _BaseCRUDMixin:
 
 class CreateMixin(_BaseCRUDMixin):
     """
-    Add a `create` class method to create new model objects.
+    Add a `create` class method to create new model instances.
     """
 
     @classmethod
     def create(cls, **kwargs):
         """
-        Create and save a new model object using the keyword arguments.
+        Create and save a new model instances using the keyword arguments.
         """
 
         instance = cls()
@@ -53,7 +53,7 @@ class CreateMixin(_BaseCRUDMixin):
 
 class ReadMixin(_BaseCRUDMixin):
     """
-    Add `read` and `read_one` class methods to read model objects.
+    Add `read` and `read_one` class methods to read model instances.
     """
 
     @classmethod
@@ -67,7 +67,7 @@ class ReadMixin(_BaseCRUDMixin):
         for key, value in kwargs.items():
             if not hasattr(cls, key):
                 raise AttributeError(
-                    f"'{cls.__name__}' object has no attribute '{key}'"
+                    f"An instance of '{type(self).__name__}' has no attribute '{key}.'"
                 )
 
             statement = statement.where(getattr(cls, key) == value)
@@ -77,7 +77,7 @@ class ReadMixin(_BaseCRUDMixin):
     @classmethod
     def read(cls, **kwargs) -> list:
         """
-        Read all model objects satisfying the keyword arguments.
+        Read all model instances satisfying the keyword arguments.
         """
 
         statement = cls._read_statement(**kwargs)
@@ -87,7 +87,7 @@ class ReadMixin(_BaseCRUDMixin):
     @classmethod
     def read_one(cls, **kwargs):
         """
-        Read the first model object satisfying the keyword arguments.
+        Read the first model instance satisfying the keyword arguments.
         """
 
         statement = cls._read_statement(**kwargs)
@@ -97,12 +97,12 @@ class ReadMixin(_BaseCRUDMixin):
 
 class UpdateMixin(_BaseCRUDMixin):
     """
-    Add an `update` method to update the model object.
+    Add an `update` method to update the model instance.
     """
 
     def update(self, **kwargs):
         """
-        Update and save the current model object using the keyword arguments.
+        Update and save the current model instance using the keyword arguments.
         """
 
         self._fill(**kwargs)
@@ -114,12 +114,12 @@ class UpdateMixin(_BaseCRUDMixin):
 
 class DeleteMixin(_BaseCRUDMixin):
     """
-    Add a `delete` method to delete the model object.
+    Add a `delete` method to delete the model instance.
     """
 
     def delete(self):
         """
-        Delete the current model object.
+        Delete the current model instance.
         """
 
         self.session.delete(self)
