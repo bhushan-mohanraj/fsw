@@ -5,6 +5,8 @@ These mixins require that the `session` attribute exists on the model class.
 This attribute should be set to the SQLAlchemy database session or scoped session.
 """
 
+import warnings
+
 from sqlalchemy import select
 
 
@@ -24,7 +26,7 @@ class _BaseCRUDMixin:
 
         for key, value in kwargs.items():
             if not hasattr(self, key):
-                raise AttributeError(
+                warnings.warn(
                     f"An instance of '{type(self).__name__}' has no attribute '{key}.'"
                 )
 
@@ -66,7 +68,7 @@ class ReadMixin(_BaseCRUDMixin):
 
         for key, value in kwargs.items():
             if not hasattr(cls, key):
-                raise AttributeError(
+                warnings.warn(
                     f"An instance of '{cls.__name__}' has no attribute '{key}.'"
                 )
 
