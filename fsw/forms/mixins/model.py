@@ -80,11 +80,11 @@ class ModelMixin:
     """
 
     @classmethod
-    def model_form(cls, model, exclude_names: list[str] = []):
+    def model_form(cls, model, fields: list[str]):
         """
         Create a WTForms form class from an SQLAlchemy model class.
 
-        Any excluded column names can be included in the "exclude_names" list.
+        The `fields` parameter should specify the form fields to be created from the model.
         """
 
         class ModelForm(cls):
@@ -97,7 +97,7 @@ class ModelMixin:
         for column in columns:
             name = column.name
 
-            if name in exclude_names or name == "id":
+            if name not in fields:
                 continue
 
             field_type = _column_field_type(column)
