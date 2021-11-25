@@ -80,13 +80,11 @@ class ModelMixin:
     """
 
     @classmethod
-    def model_form(cls, model, exclude_names: list[str] = [], submit: bool = True):
+    def model_form(cls, model, exclude_names: list[str] = []):
         """
         Create a WTForms form class from an SQLAlchemy model class.
 
         Any excluded column names can be included in the "exclude_names" list.
-
-        A submit field is added by default.
         """
 
         class ModelForm(cls):
@@ -106,8 +104,5 @@ class ModelMixin:
             field_kwargs = _column_field_kwargs(column)
 
             setattr(ModelForm, name, field_type(**field_kwargs))
-
-        if submit:
-            setattr(ModelForm, "submit", fields.SubmitField("Submit"))
 
         return ModelForm
