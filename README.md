@@ -14,3 +14,4 @@ FSW is a collection of tools and guides for building apps with Flask, SQLAlchemy
 - Extract `_CRUDBaseMixin._fill` to a separate helper function `_fill`.
 - Add information about `pip` installation with `git` here.
 - Use `model_instance` and `form_instance` instead of `model_object` and `form_object` when building CRUD views.
+- Use `import wtforms` instead of `from wtforms import fields` and similarly.
