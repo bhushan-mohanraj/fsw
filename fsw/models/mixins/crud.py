@@ -57,7 +57,7 @@ class ReadMixin(_BaseCRUDMixin):
         for key, value in kwargs.items():
             if not hasattr(cls, key):
                 warnings.warn(
-                    f"An instance of '{cls.__name__}' has no attribute '{key}.'"
+                    f"An instance of '{cls.__name__}' has no attribute '{key}'"
                 )
 
             statement = statement.where(getattr(cls, key) == value)
