@@ -7,9 +7,6 @@ FSW is a collection of tools and guides for building apps with Flask, SQLAlchemy
 ## To Do
 
 - Update for WTForms 3 (released) and SQLAlchemy 2 (not released).
-- Use warning instead of error in `fsw.models.mixins.crud`.
-- Change `exclude_names` parameter default argument to `None` in `ModelMixin.from_model`.
-- Replace `exclude_names` parameter with `fields` parameter.
 - Add templates with macros like `render_fields` from `lawrenceville-math`.
 - Create guides about migrations and commands with `click`.
 - When implementing CRUD views, use `request.view_args` instead of `**kwargs` for clarity.
