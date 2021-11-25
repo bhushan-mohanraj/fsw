@@ -15,3 +15,8 @@ FSW is a collection of tools and guides for building apps with Flask, SQLAlchemy
 - Add information about `pip` installation with `git` here.
 - Use `model_instance` and `form_instance` instead of `model_object` and `form_object` when building CRUD views.
 - Use `import wtforms` instead of `from wtforms import fields` and similarly.
+
+## After Commit
+
+- Lint with `pylint`.
+- Format with `black`.
