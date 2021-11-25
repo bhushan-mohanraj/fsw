@@ -80,7 +80,7 @@ class ModelMixin:
     """
 
     @classmethod
-    def from_model(cls, model, exclude_names: list[str] = [], submit: bool = True):
+    def model_form(cls, model, exclude_names: list[str] = [], submit: bool = True):
         """
         Create a WTForms form class from an SQLAlchemy model class.
 
