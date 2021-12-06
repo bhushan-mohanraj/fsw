@@ -9,7 +9,7 @@ import warnings
 
 from sqlalchemy import select
 
-from fsw.helpers import _fill
+from fsw.helpers import fill
 
 
 class _BaseCRUDMixin:
@@ -32,8 +32,8 @@ class CreateMixin(_BaseCRUDMixin):
         """
 
         instance = cls()
-        
-        _fill(instance, **kwargs)
+
+        fill(instance, **kwargs)
 
         cls.session.add(instance)
         cls.session.commit()
@@ -57,7 +57,7 @@ class ReadMixin(_BaseCRUDMixin):
         for key, value in kwargs.items():
             if not hasattr(cls, key):
                 warnings.warn(
-                    f"An instance of '{cls.__name__}' has no attribute '{key}'"
+                    f"An instance of '{cls.__name__}' has no attribute '{key}'."
                 )
 
             statement = statement.where(getattr(cls, key) == value)
@@ -95,7 +95,7 @@ class UpdateMixin(_BaseCRUDMixin):
         Update and save the current model instance using the keyword arguments.
         """
 
-        _fill(self, **kwargs)
+        fill(self, **kwargs)
 
         self.session.commit()
 

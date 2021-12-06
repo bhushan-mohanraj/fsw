@@ -5,7 +5,7 @@ Helper functions used throughout the package.
 import warnings
 
 
-def _fill(instance, **kwargs) -> None:
+def fill(instance, **kwargs) -> None:
     """
     Fill the attributes of an object instance with the given keyword arguments.
 
@@ -17,5 +17,5 @@ def _fill(instance, **kwargs) -> None:
             setattr(instance, key, value)
         else:
             warnings.warn(
-                f"An instance of '{type(instance).__name__}' has no attribute '{key}'"
+                f"An instance of '{type(instance).__name__}' has no attribute '{key}'."
             )
