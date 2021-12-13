@@ -17,5 +17,5 @@ class RedirectView(views.View):
         """
         Redirect to the given URL.
         """
-        
+
         return flask.redirect(self.redirect_url)
