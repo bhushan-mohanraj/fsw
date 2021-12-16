@@ -11,7 +11,7 @@ class RedirectView(views.View):
     A view to redirect to another URL.
     """
 
-    redirect_url: str  # The URL to redirect to.
+    redirect_url: str
 
     def get_redirect_url(self, **kwargs):
         """
