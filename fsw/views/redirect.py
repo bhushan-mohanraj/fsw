@@ -13,9 +13,18 @@ class RedirectView(views.View):
 
     redirect_url: str  # The URL to redirect to.
 
-    def dispatch_request(self):
+    def get_redirect_url(self, **kwargs):
+        """
+        Get the redirect URL.
+
+        The view arguments are passed to this method.
+        """
+
+        return self.redirect_url
+
+    def dispatch_request(self, **kwargs):
         """
         Redirect to the given URL.
         """
 
-        return flask.redirect(self.redirect_url)
+        return flask.redirect(self.get_redirect_url(**kwargs))
