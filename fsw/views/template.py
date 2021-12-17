@@ -13,15 +13,12 @@ class TemplateView(views.View):
 
     template_name: str
 
-    def get_template_context(self, **kwargs) -> dict:
+    def get_template_context(self) -> dict:
         """
         Get the context dictionary to render the template.
-
-        The view arguments are passed to this method.
-        This returns all the given keyword arguments by default.
         """
 
-        return kwargs
+        return {}
 
     def dispatch_request(self, **kwargs) -> flask.Response:
         """
@@ -30,5 +27,5 @@ class TemplateView(views.View):
 
         return flask.render_template(
             self.template_name,
-            **self.get_template_context(**kwargs),
+            **self.get_template_context(),
         )
