@@ -13,11 +13,9 @@ class RedirectView(views.View):
 
     redirect_url: str
 
-    def get_redirect_url(self, **kwargs):
+    def get_redirect_url(self):
         """
         Get the redirect URL.
-
-        The view arguments are passed to this method.
         """
 
         return self.redirect_url
@@ -27,7 +25,7 @@ class RedirectView(views.View):
         Redirect to the given URL.
         """
 
-        redirect_url = self.get_redirect_url(**kwargs)
+        redirect_url = self.get_redirect_url()
 
         if not redirect_url:
             return flask.abort(404)
