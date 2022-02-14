@@ -16,6 +16,7 @@ FSW is a collection of tools and guides for building apps with Flask, SQLAlchemy
 - Use `model_instance` and `form_instance` instead of `model_object` and `form_object` when building CRUD views.
 - For `ModelMixin`, use a dictionary of functions instead of `type()` equality checks.
 - Use `import flask.views` rather than `from flask import views`.
+- Add type annotations and fix `pylint` errors.
 
 ## Before Commit
 
