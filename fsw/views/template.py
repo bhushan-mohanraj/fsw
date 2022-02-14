@@ -11,7 +11,7 @@ class TemplateView(views.View):
     A view to render a template with context.
     """
 
-    template_name: str
+    template_name: str = ""
 
     def get_template_context(self) -> dict:
         """
