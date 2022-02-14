@@ -37,8 +37,4 @@ class RedirectView(views.View):
 
         redirect_url = self._get_redirect_url()
 
-        # Return a 404 error if the redirect URL is empty.
-        if not redirect_url:
-            return flask.abort(404)
-
         return flask.redirect(redirect_url)
