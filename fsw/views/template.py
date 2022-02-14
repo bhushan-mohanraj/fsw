@@ -20,7 +20,7 @@ class TemplateView(views.View):
 
         return {}
 
-    def _get_template_context(self) -> str:
+    def _get_template_context(self) -> dict:
         """
         Internally get the context dictionary to render the template.
 
