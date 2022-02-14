@@ -20,12 +20,22 @@ class RedirectView(views.View):
 
         return self.redirect_url
 
+    def _get_redirect_url(self):
+        """
+        Internally get the redirect URL.
+
+        Base subclasses can implement this method with custom behavior
+        that runs before or after behavior implemented by view subclasses.
+        """
+
+        return self.get_redirect_url()
+
     def dispatch_request(self, **kwargs):
         """
         Redirect to the given URL.
         """
 
-        redirect_url = self.get_redirect_url()
+        redirect_url = self._get_redirect_url()
 
         if not redirect_url:
             return flask.abort(404)
