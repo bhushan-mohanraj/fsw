@@ -36,6 +36,8 @@ class FormView(TemplateView, RedirectView, flask.views.View):
     def dispatch_valid_form_request(self):
         """
         Process a request with valid form data.
+        If this method returns no custom response,
+        the view redirects to the given URL.
 
         Additional form validation should occur through the form.
         """
@@ -61,6 +63,8 @@ class FormView(TemplateView, RedirectView, flask.views.View):
     def dispatch_invalid_form_request(self):
         """
         Process a request with invalid form data.
+        If this method returns no custom response,
+        the view renders the given template with the form.
         """
 
     def _dispatch_invalid_form_request(self):
