@@ -43,6 +43,9 @@ class FormView(TemplateView, RedirectView, flask.views.View):
     def _dispatch_valid_form_request(self):
         """
         Internally process a request with valid form data.
+
+        Base subclasses can implement this method with custom behavior
+        that runs before or after behavior implemented by view subclasses.
         """
 
     def dispatch_invalid_form_request(self):
@@ -53,6 +56,9 @@ class FormView(TemplateView, RedirectView, flask.views.View):
     def _dispatch_invalid_form_request(self):
         """
         Internally process a request with invalid form data.
+
+        Base subclasses can implement this method with custom behavior
+        that runs before or after behavior implemented by view subclasses.
         """
 
     def dispatch_request(self, **kwargs):
