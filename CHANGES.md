@@ -12,6 +12,7 @@
 - Rename `_fill` helper function to `fill`.
 - Add `views` package for custom views.
 - Create `RedirectView`, `TemplateView`, and `FormView`.
+- Increase the required Python version to 3.10.
 
 ## Version 0.2.2
 
