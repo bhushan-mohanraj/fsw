@@ -2,10 +2,6 @@
 venv/
 __pycache__/
 
-# Editors
-.vscode/
-.idea/
-
 # Project
 dist/
 *.egg-info/
