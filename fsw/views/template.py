@@ -11,7 +11,7 @@ class TemplateView(views.View):
     A view to render a template with context.
     """
 
-    template_name: str
+    template_name: str = ""
 
     def get_template_context(self) -> dict:
         """
@@ -20,6 +20,16 @@ class TemplateView(views.View):
 
         return {}
 
+    def _get_template_context(self) -> dict:
+        """
+        Internally get the context dictionary to render the template.
+
+        Base subclasses can implement this method with custom behavior
+        that runs before or after behavior implemented by view subclasses.
+        """
+
+        return self.get_template_context()
+
     def dispatch_request(self, **kwargs) -> flask.Response:
         """
         Render the template with the template context.
@@ -27,5 +37,5 @@ class TemplateView(views.View):
 
         return flask.render_template(
             self.template_name,
-            **self.get_template_context(),
+            **self._get_template_context(),
         )
