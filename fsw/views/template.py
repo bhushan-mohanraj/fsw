@@ -3,7 +3,7 @@ A view to render a template with context.
 """
 
 import flask
-from flask import views
+import flask.views
 
 
 class TemplateMixin:
@@ -30,7 +30,7 @@ class TemplateMixin:
 
         return self.get_template_context()
 
-class TemplateView(views.View, TemplateMixin):
+class TemplateView(flask.views.View, TemplateMixin):
     """
     A view that renders a template with context.
     """
