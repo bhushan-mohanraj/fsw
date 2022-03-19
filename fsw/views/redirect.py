@@ -3,10 +3,10 @@ A view to redirect to another URL.
 """
 
 import flask
-from flask import views
+import flask.views
 
 
-class RedirectView(views.View):
+class RedirectView(flask.views.View):
     """
     A view to redirect to another URL.
     """
