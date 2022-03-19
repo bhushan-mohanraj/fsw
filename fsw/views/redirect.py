@@ -3,12 +3,12 @@ A view to redirect to another URL.
 """
 
 import flask
-from flask import views
+import flask.views
 
 
-class RedirectView(views.View):
+class RedirectMixin:
     """
-    A view to redirect to another URL.
+    A mixin for views the redirect to another URL.
     """
 
     redirect_url: str = ""
@@ -29,6 +29,12 @@ class RedirectView(views.View):
         """
 
         return self.get_redirect_url()
+
+
+class RedirectView(flask.views.View, RedirectMixin):
+    """
+    A view that redirects to another URL.
+    """
 
     def dispatch_request(self, **kwargs):
         """
