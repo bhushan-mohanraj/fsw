@@ -30,6 +30,7 @@ class TemplateMixin:
 
         return self.get_template_context()
 
+
 class TemplateView(flask.views.View, TemplateMixin):
     """
     A view that renders a template with context.
