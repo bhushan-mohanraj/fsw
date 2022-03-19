@@ -30,7 +30,7 @@ class TemplateView(views.View):
 
         return self.get_template_context()
 
-    def dispatch_request(self, **kwargs) -> flask.Response:
+    def dispatch_request(self, **kwargs):
         """
         Render the template with the template context.
         """
