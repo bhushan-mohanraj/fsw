@@ -6,9 +6,9 @@ import flask
 from flask import views
 
 
-class TemplateView(views.View):
+class TemplateMixin:
     """
-    A view to render a template with context.
+    A mixin for views that render a template with context.
     """
 
     template_name: str = ""
@@ -29,6 +29,11 @@ class TemplateView(views.View):
         """
 
         return self.get_template_context()
+
+class TemplateView(views.View, TemplateMixin):
+    """
+    A view that renders a template with context.
+    """
 
     def dispatch_request(self, **kwargs):
         """
