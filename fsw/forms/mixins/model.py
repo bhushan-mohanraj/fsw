@@ -8,7 +8,9 @@ from wtforms.fields import html5
 from sqlalchemy import inspect, types
 
 
-# The output formats for the HTML time, date, and datetime-local fields.
+# The output formats for the HTML date and time fields.
+# WTForms provides inconsistent default values,
+# so these values are passed when creating the fields.
 TIME_FORMAT = "%H:%M"
 DATE_FORMAT = "%Y-%m-%d"
 DATETIME_LOCAL_FORMAT = "%Y-%m-%dT%H:%M"
