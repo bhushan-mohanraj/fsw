@@ -33,7 +33,7 @@ class RedirectMixin:
 
 class RedirectView(flask.views.View, RedirectMixin):
     """
-    A view to redirect to another URL.
+    A view that redirects to another URL.
     """
 
     def dispatch_request(self, **kwargs):
