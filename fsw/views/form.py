@@ -9,9 +9,9 @@ from fsw.views.redirect import RedirectMixin, RedirectView
 from fsw.views.template import TemplateMixin, TemplateView
 
 
-class FormView(flask.views.View, RedirectMixin, TemplateMixin):
+class FormMixin(RedirectMixin, TemplateMixin):
     """
-    A view class to render and process forms.
+    A mixin for views that render and process a form.
     """
 
     # The form class.
@@ -84,6 +84,12 @@ class FormView(flask.views.View, RedirectMixin, TemplateMixin):
 
         # Render the given template with the form and validation errors.
         return TemplateView.dispatch_request(self)
+
+
+class FormView(flask.views.View, FormMixin):
+    """
+    A view that renders and processes a form.
+    """
 
     def dispatch_request(self, **kwargs):
         """
