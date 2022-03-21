@@ -11,6 +11,7 @@ class TemplateMixin:
     A mixin for views that render a template with context.
     """
 
+    # The Flask template name to render.
     template_name: str = ""
 
     def get_template_context(self) -> dict:
