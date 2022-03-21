@@ -26,7 +26,7 @@ class RedirectMixin:
         Internally get the redirect URL.
 
         Base subclasses can implement this method with custom behavior
-        that runs before or after behavior implemented by view subclasses.
+        run before or after behavior implemented by view subclasses.
         """
 
         return self.get_redirect_url()

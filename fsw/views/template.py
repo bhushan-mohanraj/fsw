@@ -25,7 +25,7 @@ class TemplateMixin:
         Internally get the context dictionary to render the template.
 
         Base subclasses can implement this method with custom behavior
-        that runs before or after behavior implemented by view subclasses.
+        run before or after behavior implemented by view subclasses.
         """
 
         return self.get_template_context()
