@@ -11,6 +11,7 @@ class RedirectMixin:
     A mixin for views the redirect to another URL.
     """
 
+    # The URL to redirect to. For Flask views, use `flask.url_for`.
     redirect_url: str = ""
 
     def get_redirect_url(self) -> str:
