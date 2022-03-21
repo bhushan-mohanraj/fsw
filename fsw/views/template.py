@@ -14,12 +14,15 @@ class TemplateMixin:
     # The Flask template name to render.
     template_name: str = ""
 
+    # The context dictionary with which to render the template.
+    template_context: dict = {}
+
     def get_template_context(self) -> dict:
         """
         Get the context dictionary to render the template.
         """
 
-        return {}
+        return self.template_context
 
     def _get_template_context(self) -> dict:
         """
