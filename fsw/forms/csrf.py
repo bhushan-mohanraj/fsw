@@ -4,7 +4,7 @@ import flask
 import wtforms.csrf.session
 
 
-class CSRFMixin:
+class CSRFFormMixin:
     """
     Add CSRF protection to forms, using the Flask session.
     """

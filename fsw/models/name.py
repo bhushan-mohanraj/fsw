@@ -1,7 +1,7 @@
 from sqlalchemy.orm import declared_attr
 
 
-class ClassNameMixin:
+class ClassNameModelMixin:
     """
     Set the table name to the model class name.
     """

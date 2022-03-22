@@ -74,7 +74,7 @@ def _column_field_kwargs(column) -> dict:
     return field_kwargs
 
 
-class ModelMixin:
+class ModelFormMixin:
     """
     Add a class method to create WTForms form classes from SQLAlchemy model classes.
     """

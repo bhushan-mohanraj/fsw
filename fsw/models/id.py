@@ -1,7 +1,7 @@
 from sqlalchemy import Column, types
 
 
-class IDMixin:
+class IDModelMixin:
     """
     Add an integer, primary key ID column to a model.
     """
