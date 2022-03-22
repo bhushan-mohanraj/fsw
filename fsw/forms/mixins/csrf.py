@@ -1,7 +1,7 @@
 import secrets
 
 import flask
-from wtforms.csrf.session import SessionCSRF
+import wtforms.csrf.session
 
 
 class CSRFMixin:
@@ -11,6 +11,6 @@ class CSRFMixin:
 
     class Meta:
         csrf = True
-        csrf_class = SessionCSRF
+        csrf_class = wtforms.csrf.session.SessionCSRF
         csrf_secret = secrets.token_hex()
         csrf_context = flask.session
