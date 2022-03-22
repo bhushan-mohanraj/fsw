@@ -1,7 +1,6 @@
 import secrets
 
 from flask import session
-
 from wtforms.csrf.session import SessionCSRF
 
 

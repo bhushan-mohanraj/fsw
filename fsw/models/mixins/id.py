@@ -1,4 +1,4 @@
-from sqlalchemy import types, Column
+from sqlalchemy import Column, types
 
 
 class IDMixin:

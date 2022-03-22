@@ -2,11 +2,9 @@
 Convert WTForms form classes to SQLAlchemy model classes.
 """
 
-from wtforms import validators, fields
-from wtforms.fields import html5
-
 from sqlalchemy import inspect, types
-
+from wtforms import fields, validators
+from wtforms.fields import html5
 
 # The output formats for the HTML date and time fields.
 # WTForms provides inconsistent default values,
