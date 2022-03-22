@@ -47,7 +47,7 @@ class FormMixin(RedirectMixin, TemplateMixin):
         Internally process a request with valid form data.
 
         Base subclasses can implement this method with custom behavior
-        that runs before or after behavior implemented by view subclasses.
+        run before or after behavior implemented by view subclasses.
         """
 
         # Run custom behavior for a valid request.
@@ -72,7 +72,7 @@ class FormMixin(RedirectMixin, TemplateMixin):
         Internally process a request with invalid form data.
 
         Base subclasses can implement this method with custom behavior
-        that runs before or after behavior implemented by view subclasses.
+        run before or after behavior implemented by view subclasses.
         """
 
         # Run custom behavior for an invalid request.
