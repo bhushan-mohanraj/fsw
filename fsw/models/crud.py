@@ -114,9 +114,3 @@ class DeleteModelMixin(_BaseCRUDModelMixin):
 
         self.session.delete(self)
         self.session.commit()
-
-
-class CRUDModelMixin(CreateModelMixin, ReadModelMixin, UpdateModelMixin, DeleteModelMixin):
-    """
-    A mixin combining the create, read, update, and delete mixins.
-    """
