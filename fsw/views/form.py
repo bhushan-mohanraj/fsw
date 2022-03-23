@@ -5,8 +5,8 @@ A view class to render and process forms.
 import flask
 import flask.views
 
-from fsw.views.redirect import RedirectViewMixin, RedirectView
-from fsw.views.template import TemplateViewMixin, TemplateView
+from fsw.views.redirect import RedirectView, RedirectViewMixin
+from fsw.views.template import TemplateView, TemplateViewMixin
 
 
 class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
