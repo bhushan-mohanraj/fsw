@@ -5,11 +5,11 @@ A view class to render and process forms.
 import flask
 import flask.views
 
-from fsw.views.redirect import RedirectMixin, RedirectView
-from fsw.views.template import TemplateMixin, TemplateView
+from fsw.views.redirect import RedirectView, RedirectViewMixin
+from fsw.views.template import TemplateView, TemplateViewMixin
 
 
-class FormMixin(RedirectMixin, TemplateMixin):
+class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
     """
     A mixin for views that render and process a form.
     """
@@ -86,7 +86,7 @@ class FormMixin(RedirectMixin, TemplateMixin):
         return TemplateView.dispatch_request(self)
 
 
-class FormView(flask.views.View, FormMixin):
+class FormView(flask.views.View, FormViewMixin):
     """
     A view that renders and processes a form.
     """

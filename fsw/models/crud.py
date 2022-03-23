@@ -12,7 +12,7 @@ from sqlalchemy import select
 from fsw.helpers import fill
 
 
-class _BaseCRUDMixin:
+class _BaseCRUDModelMixin:
     """
     The base class for CRUD mixins.
     """
@@ -20,7 +20,7 @@ class _BaseCRUDMixin:
     session = None  # The SQLAlchemy database session or scoped session.
 
 
-class CreateMixin(_BaseCRUDMixin):
+class CreateModelMixin(_BaseCRUDModelMixin):
     """
     Add a `create` class method to create new model instances.
     """
@@ -41,7 +41,7 @@ class CreateMixin(_BaseCRUDMixin):
         return instance
 
 
-class ReadMixin(_BaseCRUDMixin):
+class ReadModelMixin(_BaseCRUDModelMixin):
     """
     Add `read` and `read_one` class methods to read model instances.
     """
@@ -85,7 +85,7 @@ class ReadMixin(_BaseCRUDMixin):
         return cls.session.execute(statement).scalars().first()
 
 
-class UpdateMixin(_BaseCRUDMixin):
+class UpdateModelMixin(_BaseCRUDModelMixin):
     """
     Add an `update` method to update the model instance.
     """
@@ -102,7 +102,7 @@ class UpdateMixin(_BaseCRUDMixin):
         return self
 
 
-class DeleteMixin(_BaseCRUDMixin):
+class DeleteModelMixin(_BaseCRUDModelMixin):
     """
     Add a `delete` method to delete the model instance.
     """
@@ -114,9 +114,3 @@ class DeleteMixin(_BaseCRUDMixin):
 
         self.session.delete(self)
         self.session.commit()
-
-
-class CRUDMixin(CreateMixin, ReadMixin, UpdateMixin, DeleteMixin):
-    """
-    A mixin combining the create, read, update, and delete mixins.
-    """

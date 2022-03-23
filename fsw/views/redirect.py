@@ -6,7 +6,7 @@ import flask
 import flask.views
 
 
-class RedirectMixin:
+class RedirectViewMixin:
     """
     A mixin for views the redirect to another URL.
     """
@@ -34,7 +34,7 @@ class RedirectMixin:
         return self.get_redirect_url()
 
 
-class RedirectView(flask.views.View, RedirectMixin):
+class RedirectView(flask.views.View, RedirectViewMixin):
     """
     A view that redirects to another URL.
     """

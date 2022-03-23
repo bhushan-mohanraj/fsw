@@ -6,7 +6,7 @@ import flask
 import flask.views
 
 
-class TemplateMixin:
+class TemplateViewMixin:
     """
     A mixin for views that render a template with context.
     """
@@ -54,7 +54,7 @@ class TemplateMixin:
         return self.get_template_context()
 
 
-class TemplateView(flask.views.View, TemplateMixin):
+class TemplateView(flask.views.View, TemplateViewMixin):
     """
     A view that renders a template with context.
     """
