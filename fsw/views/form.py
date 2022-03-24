@@ -27,7 +27,6 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
 
         template_context = TemplateViewMixin._get_template_context(self)
 
-        # Add the current form instance to the context.
         template_context["form_instance"] = self.form_instance
 
         return template_context
@@ -52,11 +51,9 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
         # Run custom behavior for a valid request.
         response = self.dispatch_valid_form_request()
 
-        # Return the custom response if given.
         if response:
             return response
 
-        # Redirect to the given URL.
         return RedirectView.dispatch_request(self)
 
     def dispatch_invalid_form_request(self):
@@ -77,11 +74,10 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
         # Run custom behavior for an invalid request.
         response = self.dispatch_invalid_form_request()
 
-        # Return the custom response if given.
         if response:
             return response
 
-        # Render the given template with the form and validation errors.
+        # Render the template with the form and validation errors.
         return TemplateView.dispatch_request(self)
 
 
