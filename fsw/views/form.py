@@ -31,6 +31,13 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
 
         return template_context
 
+    def validate_form_instance(self) -> bool:
+        """
+        Perform additional form validation after the WTForms validation.
+        """
+
+        return True
+
     def dispatch_valid_form_request(self):
         """
         Process a request with valid form data.
@@ -97,7 +104,7 @@ class FormView(flask.views.View, FormViewMixin):
         # Process a request with submitted form data.
         if flask.request.method == "POST":
             # Dispatch a request with valid form data.
-            if self.form_instance.validate():
+            if self.form_instance.validate() and self.validate_form_instance():
                 return self._dispatch_valid_form_request()
 
             # Dispatch a request with invalid form data.
