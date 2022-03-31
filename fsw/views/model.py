@@ -14,7 +14,7 @@ class ModelViewMixin:
     model: type
 
 
-class ModelInstanceViewMixin(_ModelViewMixin):
+class ModelInstanceViewMixin(ModelViewMixin):
     """
     A mixin for views that process one model instance.
     """
@@ -30,7 +30,7 @@ class ModelInstanceViewMixin(_ModelViewMixin):
         return None
 
 
-class ModelInstancesViewMixin(_ModelViewMixin):
+class ModelInstancesViewMixin(ModelViewMixin):
     """
     A mixin for views that process multiple model instances.
     """
