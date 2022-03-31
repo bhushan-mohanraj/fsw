@@ -33,7 +33,7 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
 
     def validate_form_instance(self) -> bool:
         """
-        Perform additional form validation after the WTForms validation.
+        Perform additional form validation after WTForms.
         """
 
         return True
@@ -80,7 +80,6 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
         if response := self.dispatch_invalid_form_request():
             return response
 
-        # Render the template with the form and validation errors.
         return TemplateView.dispatch_request(self)
 
 

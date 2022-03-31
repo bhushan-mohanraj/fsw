@@ -28,7 +28,7 @@ class RedirectViewMixin:
         Base subclasses can implement this method with custom behavior
         run before or after behavior implemented by view subclasses.
 
-        If this method returns `None`, the view returns an HTTP 404 error.
+        If this method returns a Falsy value, the view returns a 404 error.
         """
 
         return self.get_redirect_url()
