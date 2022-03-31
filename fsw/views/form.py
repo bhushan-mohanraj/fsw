@@ -55,10 +55,8 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
         run before or after behavior implemented by view subclasses.
         """
 
-        # Run custom behavior for a valid request.
-        response = self.dispatch_valid_form_request()
-
-        if response:
+        # Run the custom behavior and return if given.
+        if response := self.dispatch_valid_form_request():
             return response
 
         return RedirectView.dispatch_request(self)
@@ -78,10 +76,8 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
         run before or after behavior implemented by view subclasses.
         """
 
-        # Run custom behavior for an invalid request.
-        response = self.dispatch_invalid_form_request()
-
-        if response:
+        # Run the custom behavior and return if given.
+        if response := self.dispatch_invalid_form_request():
             return response
 
         # Render the template with the form and validation errors.
