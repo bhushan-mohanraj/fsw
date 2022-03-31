@@ -14,8 +14,8 @@ def fill(instance, **kwargs) -> None:
     for key, value in kwargs.items():
         if not hasattr(instance, key):
             raise AttributeError(
-                "An instance of `{}`".format(type(instance).__name__)
-                "has no attribute `{}`.".format(key)
+                f"An instance of `{type(instance).__name__}`"
+                f"has no attribute `{key}`."
             )
 
         setattr(instance, key, value)
