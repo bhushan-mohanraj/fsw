@@ -44,9 +44,7 @@ class RedirectView(flask.views.View, RedirectViewMixin):
         Redirect to the given URL.
         """
 
-        redirect_url = self._get_redirect_url()
+        if redirect_url := self._get_redirect_url():
+            return flask.redirect(redirect_url)
 
-        if not redirect_url:
-            return flask.abort(404)
-
-        return flask.redirect(redirect_url)
+        return flask.abort(404)
