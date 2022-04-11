@@ -12,16 +12,16 @@ class RedirectViewMixin:
     """
 
     # The URL to redirect to. For Flask views, use `flask.url_for`.
-    redirect_url: str = ""
+    redirect_url: str | None
 
-    def get_redirect_url(self) -> str:
+    def get_redirect_url(self) -> str | None:
         """
         Get the redirect URL.
         """
 
         return self.redirect_url
 
-    def _get_redirect_url(self) -> str:
+    def _get_redirect_url(self) -> str | None:
         """
         Internally get the redirect URL.
 
