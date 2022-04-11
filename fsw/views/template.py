@@ -12,19 +12,19 @@ class TemplateViewMixin:
     """
 
     # The Flask template name to render.
-    template_name: str = ""
+    template_name: str | None
 
     # The context dictionary with which to render the template.
-    template_context: dict = {}
+    template_context: dict | None
 
-    def get_template_name(self) -> str:
+    def get_template_name(self) -> str | None:
         """
         Get the Flask template name to render.
         """
 
         return self.template_name
 
-    def _get_template_name(self) -> str:
+    def _get_template_name(self) -> str | None:
         """
         Internally get the Flask template name to render.
 
@@ -36,14 +36,14 @@ class TemplateViewMixin:
 
         return self.get_template_name()
 
-    def get_template_context(self) -> dict:
+    def get_template_context(self) -> dict | None:
         """
         Get the context dictionary to render the template.
         """
 
         return self.template_context
 
-    def _get_template_context(self) -> dict:
+    def _get_template_context(self) -> dict | None:
         """
         Internally get the context dictionary to render the template.
 
