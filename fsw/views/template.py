@@ -64,12 +64,10 @@ class TemplateView(flask.views.View, TemplateViewMixin):
         Render the template with the template context.
         """
 
-        template_name = self._get_template_name()
+        if template_name := self._get_template_name():
+            if template_context := self._get_template_context():
+                return flask.render_template(template_name, **template_context)
 
-        if not template_name:
-            return flask.abort(404)
+            return flask.render_template(template_name)
 
-        return flask.render_template(
-            template_name,
-            **self._get_template_context(),
-        )
+        return flask.abort(404)
