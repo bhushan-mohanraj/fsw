@@ -25,7 +25,7 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
         Add the form instance to the template context.
         """
 
-        template_context = TemplateViewMixin._get_template_context(self)
+        template_context = TemplateViewMixin._get_template_context(self) or {}
 
         template_context["form_instance"] = self.form_instance
 
