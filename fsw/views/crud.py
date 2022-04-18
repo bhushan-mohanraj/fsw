@@ -5,7 +5,7 @@ Views to create, read, update, and delete model instances.
 import sqlalchemy.orm
 
 
-class ModelViewMixin:
+class _ModelViewMixin:
     """
     A mixin for views that process an SQLAlchemy model class.
     """
@@ -17,7 +17,7 @@ class ModelViewMixin:
     model: type
 
 
-class ModelInstanceViewMixin(ModelViewMixin):
+class _ModelInstanceViewMixin(ModelViewMixin):
     """
     A mixin for views that process model instances.
     """
@@ -33,7 +33,7 @@ class ModelInstanceViewMixin(ModelViewMixin):
         return []
 
 
-class OneModelInstanceViewMixin(ModelViewMixin):
+class _OneModelInstanceViewMixin(ModelViewMixin):
     """
     A mixin for views that process one model instance.
     """
