@@ -59,7 +59,7 @@ class TemplateView(TemplateViewMixin, flask.views.View):
     A view that renders a template with context.
     """
 
-    def dispatch_request(self, **kwargs):
+    def dispatch_request(self: TemplateViewMixin, **kwargs):
         """
         Render the template with the template context.
         """

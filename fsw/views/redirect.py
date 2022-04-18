@@ -39,7 +39,7 @@ class RedirectView(RedirectViewMixin, flask.views.View):
     A view that redirects to another URL.
     """
 
-    def dispatch_request(self, **kwargs):
+    def dispatch_request(self: RedirectViewMixin, **kwargs):
         """
         Redirect to the given URL.
         """
