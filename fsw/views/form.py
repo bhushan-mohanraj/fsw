@@ -17,8 +17,8 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
     # The form class.
     form: type
 
-    # The current form instance.
-    form_instance = None
+    # The form instance for the current request.
+    request_form_instance = None
 
     def _get_template_context(self):
         """
@@ -27,7 +27,7 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
 
         template_context = TemplateViewMixin._get_template_context(self) or {}
 
-        template_context["form_instance"] = self.form_instance
+        template_context["form_instance"] = self.request_form_instance
 
         return template_context
 
@@ -94,12 +94,12 @@ class FormView(flask.views.View, FormViewMixin):
         and process the form data for a POST request.
         """
 
-        self.form_instance = self.form(flask.request.form)
+        self.request_form_instance = self.form(flask.request.form)
 
         # Process a request with submitted form data.
         if flask.request.method == "POST":
             # Dispatch a request with valid form data.
-            if self.form_instance.validate() and self.validate_form_instance():
+            if self.request_form_instance.validate() and self.validate_form_instance():
                 return self._dispatch_valid_form_request()
 
             # Dispatch a request with invalid form data.
