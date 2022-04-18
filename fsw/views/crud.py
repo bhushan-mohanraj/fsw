@@ -17,7 +17,7 @@ class _ModelViewMixin:
     model: type
 
 
-class _ModelInstanceViewMixin(ModelViewMixin):
+class _ModelInstanceViewMixin(_ModelViewMixin):
     """
     A mixin for views that process model instances.
     """
@@ -33,7 +33,7 @@ class _ModelInstanceViewMixin(ModelViewMixin):
         raise NotImplementedError
 
 
-class _OneModelInstanceViewMixin(ModelViewMixin):
+class _OneModelInstanceViewMixin(_ModelViewMixin):
     """
     A mixin for views that process one model instance.
     """
