@@ -69,6 +69,7 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
     def dispatch_valid_form_request(self):
         """
         Process a request with valid form data.
+
         If this method returns no custom response,
         the view redirects to the given URL.
         """
@@ -90,6 +91,7 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
     def dispatch_invalid_form_request(self):
         """
         Process a request with invalid form data.
+
         If this method returns no custom response,
         the view renders the given template with the form.
         """
