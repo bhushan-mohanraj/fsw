@@ -34,7 +34,7 @@ class RedirectViewMixin:
         return self.get_redirect_url()
 
 
-class RedirectView(flask.views.View, RedirectViewMixin):
+class RedirectView(RedirectViewMixin, flask.views.View):
     """
     A view that redirects to another URL.
     """

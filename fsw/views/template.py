@@ -54,7 +54,7 @@ class TemplateViewMixin:
         return self.get_template_context()
 
 
-class TemplateView(flask.views.View, TemplateViewMixin):
+class TemplateView(TemplateViewMixin, flask.views.View):
     """
     A view that renders a template with context.
     """
