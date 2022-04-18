@@ -20,7 +20,7 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
     # The form instance for the current request.
     request_form_instance = None
 
-    def _get_template_context(self):
+    def _get_template_context(self) -> dict:
         """
         Add the form instance to the template context.
         """
