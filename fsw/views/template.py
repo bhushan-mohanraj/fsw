@@ -12,7 +12,7 @@ class TemplateViewMixin:
     """
 
     # The Flask template name to render.
-    template_name: str | None = None
+    template_name: str | None
 
     # The context dictionary with which to render the template.
     template_context: dict | None = None
