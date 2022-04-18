@@ -19,27 +19,11 @@ class ModelViewMixin:
 
 class ModelInstanceViewMixin(ModelViewMixin):
     """
-    A mixin for views that process one model instance.
+    A mixin for views that process model instances.
     """
 
-    # The current model instance (during request dispatching).
-    model_instance = None
-
-    def get_model_instance(self):
-        """
-        Get the model instance.
-        """
-
-        return None
-
-
-class ModelInstancesViewMixin(ModelViewMixin):
-    """
-    A mixin for views that process multiple model instances.
-    """
-
-    # The current model instances (during request dispatching).
-    model_instances = []
+    # The model instances for the current request.
+    request_model_instances = []
 
     def get_model_instances(self) -> list:
         """
@@ -47,3 +31,19 @@ class ModelInstancesViewMixin(ModelViewMixin):
         """
 
         return []
+
+
+class OneModelInstanceViewMixin(ModelViewMixin):
+    """
+    A mixin for views that process one model instance.
+    """
+
+    # The model instance for the current request.
+    request_model_instance = None
+
+    def get_model_instance(self):
+        """
+        Get the model instance.
+        """
+
+        return None
