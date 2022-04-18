@@ -2,13 +2,16 @@
 Views to create, read, update, and delete model instances.
 """
 
+import sqlalchemy.orm
+
+
 class ModelViewMixin:
     """
     A mixin for views that process an SQLAlchemy model class.
     """
 
     # The SQLAlchemy database session.
-    database_session: None
+    database_session: sqlalchemy.orm.scoped_session
 
     # The model class.
     model: type
