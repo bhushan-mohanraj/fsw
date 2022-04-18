@@ -9,7 +9,7 @@ from fsw.views.redirect import RedirectView, RedirectViewMixin
 from fsw.views.template import TemplateView, TemplateViewMixin
 
 
-class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
+class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
     """
     A mixin for views that render and process a form.
     """
@@ -111,7 +111,7 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
         return TemplateView.dispatch_request(self)
 
 
-class FormView(flask.views.View, FormViewMixin):
+class FormView(FormViewMixin, flask.views.View):
     """
     A view that renders and processes a form.
     """
