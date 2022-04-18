@@ -30,7 +30,7 @@ class _ModelInstanceViewMixin(ModelViewMixin):
         Get the model instances.
         """
 
-        return []
+        raise NotImplementedError
 
 
 class _OneModelInstanceViewMixin(ModelViewMixin):
@@ -46,4 +46,4 @@ class _OneModelInstanceViewMixin(ModelViewMixin):
         Get the model instance.
         """
 
-        return None
+        raise NotImplementedError
