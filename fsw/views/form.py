@@ -31,6 +31,24 @@ class FormViewMixin(RedirectViewMixin, TemplateViewMixin):
 
         return template_context
 
+    def get_form_instance(self):
+        """
+        Get the new form instance for both GET and POST requests.
+        """
+
+    def _get_form_instance(self):
+        """
+        Internally get the new form instance for both GET and POST requests.
+        """
+
+        if form_instance := self.get_form_instance():
+            return form_instance
+
+        if flask.request.method == "POST":
+            return self.form(flask.request.form)
+
+        return self.form()
+
     def validate_form_instance(self) -> bool:
         """
         Perform additional form validation after WTForms.
@@ -94,7 +112,7 @@ class FormView(flask.views.View, FormViewMixin):
         and process the form data for a POST request.
         """
 
-        self.request_form_instance = self.form(flask.request.form)
+        self.request_form_instance = self._get_form_instance()
 
         # Process a request with submitted form data.
         if flask.request.method == "POST":
