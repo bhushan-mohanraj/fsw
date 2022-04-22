@@ -4,6 +4,7 @@ A view class to render and process forms.
 
 import flask
 import flask.views
+import wtforms
 
 from fsw.views.redirect import RedirectView, RedirectViewMixin
 from fsw.views.template import TemplateView, TemplateViewMixin
@@ -18,7 +19,7 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
     form: type
 
     # The form instance for the current request.
-    request_form_instance = None
+    request_form_instance: wtforms.Form
 
     def _get_template_context(self) -> dict:
         """
