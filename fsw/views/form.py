@@ -2,6 +2,8 @@
 A view class to render and process forms.
 """
 
+import typing
+
 import flask
 import flask.views
 import wtforms
@@ -16,7 +18,7 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
     """
 
     # The form class.
-    form: type
+    form: typing.Type[wtforms.Form]
 
     # The form instance for the current request.
     request_form_instance: wtforms.Form
