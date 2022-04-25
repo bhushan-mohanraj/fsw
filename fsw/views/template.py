@@ -15,7 +15,7 @@ class TemplateViewMixin:
     template_name: str
 
     # The context dictionary with which to render the template.
-    template_context: dict | None = None
+    template_context: dict = {}
 
     def get_template_name(self) -> str:
         """
@@ -34,14 +34,14 @@ class TemplateViewMixin:
 
         return self.get_template_name()
 
-    def get_template_context(self) -> dict | None:
+    def get_template_context(self) -> dict:
         """
         Get the context dictionary to render the template.
         """
 
         return self.template_context
 
-    def _get_template_context(self) -> dict | None:
+    def _get_template_context(self) -> dict:
         """
         Internally get the context dictionary to render the template.
 
