@@ -12,26 +12,24 @@ class TemplateViewMixin:
     """
 
     # The Flask template name to render.
-    template_name: str | None
+    template_name: str
 
     # The context dictionary with which to render the template.
     template_context: dict | None = None
 
-    def get_template_name(self) -> str | None:
+    def get_template_name(self) -> str:
         """
         Get the Flask template name to render.
         """
 
         return self.template_name
 
-    def _get_template_name(self) -> str | None:
+    def _get_template_name(self) -> str:
         """
         Internally get the Flask template name to render.
 
         Base subclasses can implement this method with custom behavior
         run before or after behavior implemented by view subclasses.
-
-        If this method returns a Falsy value, the view returns a 404 error.
         """
 
         return self.get_template_name()
@@ -64,10 +62,9 @@ class TemplateView(TemplateViewMixin, flask.views.View):
         Render the template with the template context.
         """
 
-        if template_name := self._get_template_name():
-            if template_context := self._get_template_context():
-                return flask.render_template(template_name, **template_context)
+        template_name = self._get_template_name()
 
-            return flask.render_template(template_name)
+        if template_context := self._get_template_context():
+            return flask.render_template(template_name, **template_context)
 
-        return flask.abort(404)
+        return flask.render_template(template_name)
