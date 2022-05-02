@@ -17,6 +17,8 @@ class RedirectViewMixin:
     def get_redirect_url(self) -> str:
         """
         Get the redirect URL.
+
+        This method overrides the `redirect_url` attribute.
         """
 
         return self.redirect_url
