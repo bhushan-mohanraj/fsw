@@ -11,6 +11,7 @@ class _ModelViewMixin:
     """
 
     # The SQLAlchemy database session.
+    # TODO: Consider setting `flask.g.database_session` to the scoped session.
     database_session: sqlalchemy.orm.scoped_session
 
     # The model class.
