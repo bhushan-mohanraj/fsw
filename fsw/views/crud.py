@@ -2,6 +2,8 @@
 Views to create, read, update, and delete model instances.
 """
 
+import typing
+
 import sqlalchemy.orm
 
 
@@ -23,7 +25,7 @@ class ModelInstanceViewMixin(ModelViewMixin):
     """
 
     # The model instances for the current request.
-    request_model_instances = []
+    request_model_instances: list
 
     def get_model_instances(self) -> list:
         """
@@ -39,7 +41,7 @@ class OneModelInstanceViewMixin(ModelViewMixin):
     """
 
     # The model instance for the current request.
-    request_model_instance = None
+    request_model_instance: typing.Any
 
     def get_model_instance(self):
         """
