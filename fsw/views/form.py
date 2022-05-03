@@ -21,6 +21,8 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
     form: typing.Type[wtforms.Form]
 
     # The form instance for the current request.
+    # When rendering templates with Jinja, the form instance
+    # is accessible as the context variable `form_instance`.
     request_form_instance: wtforms.Form
 
     def _get_template_context(self) -> dict:
