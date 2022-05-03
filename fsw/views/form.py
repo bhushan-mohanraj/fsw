@@ -34,12 +34,12 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
 
         return template_context
 
-    def get_form_instance(self):
+    def get_form_instance(self) -> wtforms.Form:
         """
         Get the new form instance for both GET and POST requests.
         """
 
-    def _get_form_instance(self):
+    def _get_form_instance(self) -> wtforms.Form:
         """
         Internally get the new form instance for both GET and POST requests.
         """
