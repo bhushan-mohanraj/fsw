@@ -37,6 +37,10 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
     def get_form_instance(self) -> wtforms.Form:
         """
         Get the new form instance for both GET and POST requests.
+
+        Unless this method returns a custom form instance,
+        the view creates an empty form instance for GET requests
+        and creates an instance from the POST data for POST requests.
         """
 
     def _get_form_instance(self) -> wtforms.Form:
