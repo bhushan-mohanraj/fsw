@@ -77,7 +77,7 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
         """
         Process a request with valid form data.
 
-        If this method returns no custom response,
+        Unless this method returns a custom response,
         the view redirects to the given URL.
         """
 
@@ -99,7 +99,7 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
         """
         Process a request with invalid form data.
 
-        If this method returns no custom response,
+        Unless this method returns a custom response,
         the view renders the given template with the form.
         """
 
