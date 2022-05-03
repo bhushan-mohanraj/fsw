@@ -25,6 +25,8 @@ class ModelInstanceViewMixin(ModelViewMixin):
     """
 
     # The model instances for the current request.
+    # When rendering templates with Jinja, the list of model instances
+    # is accessible as the context variable `model_instances`.
     request_model_instances: list
 
     def get_model_instances(self) -> list:
@@ -41,6 +43,8 @@ class OneModelInstanceViewMixin(ModelViewMixin):
     """
 
     # The model instance for the current request.
+    # When rendering templates with Jinja, the model instance
+    # is accessible as the context variable `model_instance`.
     request_model_instance: typing.Any
 
     def get_model_instance(self):
