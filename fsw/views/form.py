@@ -25,12 +25,12 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
     # is accessible as the context variable `form_instance`.
     request_form_instance: wtforms.Form
 
-    def _get_template_context(self) -> dict:
+    def get_template_context(self) -> dict:
         """
         Add the form instance to the template context.
         """
 
-        template_context = TemplateViewMixin._get_template_context(self)
+        template_context = TemplateViewMixin.get_template_context(self)
         template_context["form_instance"] = self.request_form_instance
 
         return template_context

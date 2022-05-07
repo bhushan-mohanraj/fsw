@@ -35,16 +35,6 @@ class TemplateViewMixin:
 
         return self.template_context
 
-    def _get_template_context(self) -> dict:
-        """
-        Internally get the context dictionary to render the template.
-
-        Base subclasses can implement this method with custom behavior
-        run before or after behavior implemented by view subclasses.
-        """
-
-        return self.get_template_context()
-
 
 class TemplateView(TemplateViewMixin, flask.views.View):
     """
@@ -57,7 +47,7 @@ class TemplateView(TemplateViewMixin, flask.views.View):
         """
 
         template_name = self.get_template_name()
-        template_context = self._get_template_context()
+        template_context = self.get_template_context()
 
         if not template_context:
             return flask.render_template(template_name)
