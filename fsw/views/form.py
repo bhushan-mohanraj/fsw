@@ -44,14 +44,6 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
         and creates an instance from the POST data for POST requests.
         """
 
-    def _get_form_instance(self) -> wtforms.Form:
-        """
-        Internally get the new form instance for both GET and POST requests.
-        """
-
-        if form_instance := self.get_form_instance():
-            return form_instance
-
         if flask.request.method == "POST":
             return self.form(flask.request.form)
 
@@ -130,7 +122,7 @@ class FormView(FormViewMixin, flask.views.View):
         and process the form data for a POST request.
         """
 
-        self.request_form_instance = self._get_form_instance()
+        self.request_form_instance = self.get_form_instance()
 
         # Process a request with submitted form data.
         if flask.request.method == "POST":
