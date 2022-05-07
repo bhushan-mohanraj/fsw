@@ -23,16 +23,6 @@ class RedirectViewMixin:
 
         return self.redirect_url
 
-    def _get_redirect_url(self) -> str:
-        """
-        Internally get the redirect URL.
-
-        Base subclasses can implement this method with custom behavior
-        run before or after behavior implemented by view subclasses.
-        """
-
-        return self.get_redirect_url()
-
 
 class RedirectView(RedirectViewMixin, flask.views.View):
     """
@@ -44,6 +34,6 @@ class RedirectView(RedirectViewMixin, flask.views.View):
         Redirect to the given URL.
         """
 
-        redirect_url = self._get_redirect_url()
+        redirect_url = self.get_redirect_url()
 
         return flask.redirect(redirect_url)
