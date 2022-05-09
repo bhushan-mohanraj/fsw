@@ -28,7 +28,7 @@ class TemplateViewMixin:
 
     def get_template_context(self) -> dict:
         """
-        Get the context dictionary to render the template.
+        Get the context dictionary with which to render the template.
 
         This method overrides the `template_context` attribute.
         """
