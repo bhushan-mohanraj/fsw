@@ -44,17 +44,15 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
 
     def get_form_instance(self) -> wtforms.Form:
         """
-        Get the new form instance for both GET and POST requests.
-
-        Unless this method returns a custom form instance,
-        the view creates an empty form instance for GET requests
-        and creates an instance from the POST data for POST requests.
+        Get the form instance for GET and POST requests.
         """
 
-        if flask.request.method == "POST":
-            return self.form(flask.request.form)
+        form = self.get_form()
 
-        return self.form()
+        if flask.request.method == "POST":
+            return form(flask.request.form)
+
+        return form()
 
     def validate_form_instance(self) -> bool:
         """
