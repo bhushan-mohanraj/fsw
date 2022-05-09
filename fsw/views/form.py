@@ -101,7 +101,7 @@ class FormView(FormViewMixin, flask.views.View):
     A view that renders and processes a form.
     """
 
-    def dispatch_request(self, **kwargs):
+    def dispatch_request(self: FormViewMixin, **kwargs):
         """
         Render the form template for a GET request,
         and process the form data for a POST request.
