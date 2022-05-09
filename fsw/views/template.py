@@ -20,8 +20,6 @@ class TemplateViewMixin:
     def get_template_name(self) -> str:
         """
         Get the Flask template name to render.
-
-        This method overrides the `template_name` attribute.
         """
 
         return self.template_name
@@ -29,8 +27,6 @@ class TemplateViewMixin:
     def get_template_context(self) -> dict:
         """
         Get the context dictionary with which to render the template.
-
-        This method overrides the `template_context` attribute.
         """
 
         return self.template_context
