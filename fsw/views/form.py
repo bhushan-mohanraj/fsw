@@ -49,6 +49,13 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
 
         return self.form()
 
+    def get_form() -> typing.Type[wtforms.Form]:
+        """
+        Get the form class.
+        """
+
+        return self.form
+
     def validate_form_instance(self) -> bool:
         """
         Validate the form instance with its submitted data.
