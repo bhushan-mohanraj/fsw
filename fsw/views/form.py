@@ -35,6 +35,13 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
 
         return template_context
 
+    def get_form() -> typing.Type[wtforms.Form]:
+        """
+        Get the form class.
+        """
+
+        return self.form
+
     def get_form_instance(self) -> wtforms.Form:
         """
         Get the new form instance for both GET and POST requests.
@@ -48,13 +55,6 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
             return self.form(flask.request.form)
 
         return self.form()
-
-    def get_form() -> typing.Type[wtforms.Form]:
-        """
-        Get the form class.
-        """
-
-        return self.form
 
     def validate_form_instance(self) -> bool:
         """
