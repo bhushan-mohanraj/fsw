@@ -56,12 +56,9 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
 
         return self.request_form_instance.validate()
 
-    def dispatch_valid_form_request(self):
+    def dispatch_valid_form_request(self) -> None:
         """
         Process a request with valid form data.
-
-        Unless this method returns a custom response,
-        the view redirects to the given URL.
         """
 
     def _dispatch_valid_form_request(self):
@@ -72,18 +69,13 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
         run before or after behavior implemented by view subclasses.
         """
 
-        # Run the custom behavior and return the response if given.
-        if response := self.dispatch_valid_form_request():
-            return response
+        self.dispatch_valid_form_request()
 
         return RedirectView.dispatch_request(self)
 
-    def dispatch_invalid_form_request(self):
+    def dispatch_invalid_form_request(self) -> None:
         """
         Process a request with invalid form data.
-
-        Unless this method returns a custom response,
-        the view renders the given template with the form.
         """
 
     def _dispatch_invalid_form_request(self):
@@ -94,9 +86,7 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
         run before or after behavior implemented by view subclasses.
         """
 
-        # Run the custom behavior and return the response if given.
-        if response := self.dispatch_invalid_form_request():
-            return response
+        self.dispatch_invalid_form_request()
 
         return TemplateView.dispatch_request(self)
 
