@@ -8,8 +8,8 @@ import flask
 import flask.views
 import wtforms
 
-from fsw.views.redirect import RedirectView, RedirectViewMixin
-from fsw.views.template import TemplateView, TemplateViewMixin
+from fsw.views.redirects import RedirectView, RedirectViewMixin
+from fsw.views.templates import TemplateView, TemplateViewMixin
 
 
 class FormViewMixin(TemplateViewMixin, RedirectViewMixin):

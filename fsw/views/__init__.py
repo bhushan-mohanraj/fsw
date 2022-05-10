@@ -1,11 +1,11 @@
-from fsw.views.redirect import (
+from fsw.views.redirects import (
     RedirectView,
 )
 
-from fsw.views.template import (
+from fsw.views.templates import (
     TemplateView,
 )
 
-from fsw.views.form import (
+from fsw.views.forms import (
     FormView,
 )
