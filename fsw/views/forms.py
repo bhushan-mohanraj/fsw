@@ -35,7 +35,7 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
 
         return template_context
 
-    def get_form() -> typing.Type[wtforms.Form]:
+    def get_form(self) -> typing.Type[wtforms.Form]:
         """
         Get the form class.
         """
