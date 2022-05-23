@@ -8,13 +8,13 @@ import flask
 import flask.views
 import wtforms
 
-from fsw.views.redirects import RedirectView, RedirectViewMixin
-from fsw.views.templates import TemplateView, TemplateViewMixin
+from fsw.views.redirects import RedirectView
+from fsw.views.templates import TemplateView
 
 
-class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
+class FormView(RedirectView, TemplateView):
     """
-    A mixin for views that render and process a form.
+    A view that renders and processes a form.
     """
 
     # The form class.
@@ -94,12 +94,6 @@ class FormViewMixin(TemplateViewMixin, RedirectViewMixin):
         self.dispatch_invalid_form_request()
 
         return TemplateView.dispatch_request(self)
-
-
-class FormView(FormViewMixin, flask.views.View):
-    """
-    A view that renders and processes a form.
-    """
 
     def dispatch_request(self: FormViewMixin, **kwargs):
         """
