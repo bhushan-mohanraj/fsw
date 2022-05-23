@@ -21,7 +21,7 @@ class RedirectView(flask.views.View):
 
         return self.redirect_url
 
-    def dispatch_request(self: RedirectViewMixin, **kwargs):
+    def dispatch_request(self, **kwargs):
         """
         Redirect to the given URL.
         """

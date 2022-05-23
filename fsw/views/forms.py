@@ -30,7 +30,7 @@ class FormView(RedirectView, TemplateView):
         Add the form instance to the template context.
         """
 
-        template_context = TemplateViewMixin.get_template_context(self)
+        template_context = TemplateView.get_template_context(self)
         template_context["form_instance"] = self.request_form_instance
 
         return template_context
@@ -95,7 +95,7 @@ class FormView(RedirectView, TemplateView):
 
         return TemplateView.dispatch_request(self)
 
-    def dispatch_request(self: FormViewMixin, **kwargs):
+    def dispatch_request(self, **kwargs):
         """
         Render the form template for a GET request,
         and process the form data for a POST request.

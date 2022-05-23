@@ -31,7 +31,7 @@ class TemplateView(flask.views.View):
 
         return self.template_context
 
-    def dispatch_request(self: TemplateViewMixin, **kwargs):
+    def dispatch_request(self, **kwargs):
         """
         Render the template with the template context.
         """
