@@ -137,3 +137,54 @@ class CreateModelView(OneModelInstanceViewMixin, FormView):
         self.database_session.commit()
 
         return RedirectView.dispatch_request(self)
+
+
+class UpdateModelView(OneModelInstanceViewMixin, FormView):
+    """
+    A view that updates and saves a model instance.
+    """
+
+    def get_template_context(self) -> dict:
+        """
+        Add the model instance to the template context.
+        """
+
+        template_context = TemplateView.get_template_context(self)
+        template_context["model_instance"] = self.request_model_instance
+
+        return template_context
+
+    def get_form_instance(self) -> wtforms.Form:
+        """
+        Get the form instance for GET and POST requests.
+        """
+
+        form = self.get_form()
+
+        if flask.request.method == "POST":
+            return form(formdata=flask.request.form)
+
+        return form(obj=self.request_model_instance)
+
+    def _dispatch_valid_form_request(self):
+        """
+        Internally process a request with valid form data.
+        """
+
+        self.request_form_instance.populate_obj(self.request_model_instance)
+
+        self.dispatch_valid_form_request()
+
+        self.database_session.add(self.request_model_instance)
+        self.database_session.commit()
+
+        return RedirectView.dispatch_request(self)
+
+    def dispatch_request(self, **kwargs):
+        """
+        Get the model instance and dispatch the request.
+        """
+
+        self.request_model_instance = self.get_model_instance()
+
+        return FormView.dispatch_request(self)
