@@ -188,3 +188,23 @@ class UpdateModelView(OneModelInstanceViewMixin, FormView):
         self.request_model_instance = self.get_model_instance()
 
         return FormView.dispatch_request(self)
+
+
+class DeleteModelView(OneModelInstanceViewMixin, RedirectView):
+    """
+    A view that deletes a model instance.
+    """
+
+    def dispatch_request(self, **kwargs):
+        """
+        Delete the model instance and redirect to the given URL.
+        """
+
+        # TODO: Consider adding a `delete` method to the model,
+        # and call that method rather than deleting from the database.
+        self.request_model_instance = self.get_model_instance()
+
+        self.database_session.delete(self.request_model_instance)
+        self.database_session.commit()
+
+        return RedirectView.dispatch_request(self)
