@@ -59,3 +59,53 @@ class OneModelInstanceViewMixin(ModelViewMixin):
         """
 
         raise NotImplementedError
+
+
+class ReadModelView(ModelInstanceViewMixin, TemplateView):
+    """
+    A view that reads model instances.
+    """
+
+    def get_template_context(self) -> dict:
+        """
+        Add the model instances to the template context.
+        """
+
+        template_context = TemplateView.get_template_context(self)
+        template_context["model_instances"] = self.request_model_instances
+
+        return template_context
+
+    def dispatch_request(self, **kwargs):
+        """
+        Get the model instances and dispatch the request.
+        """
+
+        self.request_model_instances = self.get_model_instances()
+
+        return TemplateView.dispatch_request(self)
+
+
+class ReadOneModelView(OneModelInstanceViewMixin, TemplateView):
+    """
+    A view that reads one model instance.
+    """
+
+    def get_template_context(self) -> dict:
+        """
+        Add the model instance to the template context.
+        """
+
+        template_context = TemplateView.get_template_context(self)
+        template_context["model_instance"] = self.request_model_instance
+
+        return template_context
+
+    def dispatch_request(self, **kwargs):
+        """
+        Get the model instance and dispatch the request.
+        """
+
+        self.request_model_instance = self.get_model_instance()
+
+        return TemplateView.dispatch_request(self)
