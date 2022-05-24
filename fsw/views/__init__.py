@@ -1,11 +1,7 @@
-from fsw.views.redirect import (
-    RedirectView,
-)
+"""
+Classes and helpers for creating and improving Flask views.
+"""
 
-from fsw.views.template import (
-    TemplateView,
-)
-
-from fsw.views.form import (
-    FormView,
-)
+from fsw.views.redirects import RedirectView
+from fsw.views.templates import TemplateView
+from fsw.views.forms import FormView
