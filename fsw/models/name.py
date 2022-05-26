@@ -1,4 +1,4 @@
-from sqlalchemy.orm import declared_attr
+import sqlalchemy.orm
 
 
 class ClassNameModelMixin:
@@ -6,6 +6,6 @@ class ClassNameModelMixin:
     Set the table name to the model class name.
     """
 
-    @declared_attr
+    @sqlalchemy.orm.declared_attr
     def __tablename__(cls):
         return cls.__name__
