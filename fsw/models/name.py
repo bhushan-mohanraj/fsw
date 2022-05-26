@@ -1,3 +1,7 @@
+"""
+A mixin that sets the table name to the class name of a model.
+"""
+
 import sqlalchemy.orm
 
 
