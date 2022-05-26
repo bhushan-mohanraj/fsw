@@ -7,7 +7,7 @@ import sqlalchemy
 
 class IDModelMixin:
     """
-    Add an integer, primary-key ID column to a model.
+    A mixin that adds an integer, primary-key ID column to a model.
     """
 
     id = sqlalchemy.Column(

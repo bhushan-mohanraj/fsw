@@ -7,7 +7,7 @@ import sqlalchemy.orm
 
 class ClassNameModelMixin:
     """
-    Set the table name to the model class name.
+    A mixin that sets the database table name to the class name of a model.
     """
 
     @sqlalchemy.orm.declared_attr
