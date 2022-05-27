@@ -1,3 +1,7 @@
+"""
+Classes and helpers for SQLAlchemy models.
+"""
+
 from fsw.models.id import (
     IDModelMixin,
 )
