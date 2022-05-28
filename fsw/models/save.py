@@ -5,7 +5,7 @@ A mixin that adds a method for saving a model instance.
 import sqlalchemy.orm
 
 
-class SaveMixin:
+class SaveModelMixin:
     """
     A mixin that adds a method for saving a model instance.
     """
