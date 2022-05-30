@@ -9,4 +9,4 @@ for building apps with Flask, SQLAlchemy, and WTForms.
 
 - Lint with `pylint`.
 - Format with `black`.
-- Check types with `mypy`.
+- Check typing with `mypy`.
