@@ -1,5 +1,5 @@
 """
-Classes and helpers for creating and improving Flask views.
+Classes and helpers for Flask views.
 """
 
 from fsw.views.redirects import RedirectView
