@@ -5,7 +5,8 @@ for building apps with Flask, SQLAlchemy, and WTForms.
 
 # Development
 
-## Before Commit
+## Commit Checklist
 
 - Lint with `pylint`.
 - Format with `black`.
+- Check types with `mypy`.
