@@ -2,16 +2,13 @@
 A mixin that adds a method for saving a model instance.
 """
 
-import sqlalchemy.orm
+from fsw.models.base import DatabaseSessionModelMixin
 
 
-class SaveModelMixin:
+class SaveModelMixin(DatabaseSessionModelMixin):
     """
     A mixin that adds a method for saving a model instance.
     """
-
-    # The SQLAlchemy database session.
-    database_session: sqlalchemy.orm.scoped_session
 
     def save(self) -> None:
         """
