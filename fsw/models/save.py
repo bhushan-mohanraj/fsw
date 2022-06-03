@@ -15,6 +15,5 @@ class SaveModelMixin(DatabaseSessionModelMixin):
         Commit the changes to the model instance to the database.
         """
 
-        # TODO: Consider returning a boolean, and return `False` for errors.
         self.database_session.add(self)
         self.database_session.commit()
