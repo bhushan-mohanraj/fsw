@@ -2,6 +2,17 @@
 Classes and helpers for Flask views.
 """
 
+__all__ = [
+    "RedirectView",
+    "TemplateView",
+    "FormView",
+    "ReadModelView",
+    "ReadOneModelView",
+    "CreateModelView",
+    "UpdateModelView",
+    "DeleteModelView",
+]
+
 from fsw.views.redirects import RedirectView
 from fsw.views.templates import TemplateView
 from fsw.views.forms import FormView
