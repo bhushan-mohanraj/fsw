@@ -8,4 +8,4 @@ __all__ = [
 ]
 
 from fsw.forms.csrf import CSRFProtectFormMixin
-from fsw.forms.model import ModelFormMixin
+from fsw.forms.models import ModelFormMixin
