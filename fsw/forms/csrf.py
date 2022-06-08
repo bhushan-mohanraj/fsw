@@ -1,3 +1,7 @@
+"""
+A mixin that adds CSRF protection to WTForms forms.
+"""
+
 import secrets
 
 import flask
