@@ -14,9 +14,9 @@ setuptools.setup(
     author="Bhushan Mohanraj",
     packages=setuptools.find_packages(),
     install_requires=[
-        "Flask>=2.0",
+        "Flask>=2.0,<3",
         "SQLAlchemy>=1.4,<2",
-        "WTForms>=2.3,<3",
+        "WTForms>=3.0,<4",
     ],
     python_requires=">=3.10",
 )
