@@ -2,8 +2,6 @@
 A mixin that adds CSRF protection to WTForms forms.
 """
 
-import secrets
-
 import flask
 import wtforms.csrf.session
 
@@ -12,6 +10,8 @@ class CSRFProtectFormMixin:
     """
     A mixin that adds CSRF protection to forms if the Flask app context exists,
     using the WTForms implementation of CSRF protection and the Flask session.
+
+    This mixin sets the CSRF secret key to the Flask application secret key.
     """
 
     if flask.current_app:
@@ -23,5 +23,5 @@ class CSRFProtectFormMixin:
 
             csrf = True
             csrf_class = wtforms.csrf.session.SessionCSRF
-            csrf_secret = secrets.token_hex()
+            csrf_secret = flask.current_app.secret_key
             csrf_context = flask.session
