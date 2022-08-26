@@ -15,6 +15,8 @@ class CSRFProtectFormMixin:
     """
 
     if flask.current_app:
+        # Defining the `Meta` class in a mixin
+        # does not override values set by other definitions.
         class Meta:
             """
             A class that enables CSRF protection,
