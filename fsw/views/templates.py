@@ -21,21 +21,18 @@ class TemplateView(flask.views.View):
         """
         Get the Flask template name to render.
         """
-
         return self.template_name
 
     def get_template_context(self) -> dict:
         """
         Get the context dictionary with which to render the template.
         """
-
         return self.template_context
 
     def dispatch_request(self, **kwargs):
         """
         Render the template with the template context.
         """
-
         template_name = self.get_template_name()
         template_context = self.get_template_context()
 

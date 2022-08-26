@@ -29,7 +29,6 @@ class FormView(RedirectView, TemplateView):
         """
         Add the form instance to the template context.
         """
-
         template_context = TemplateView.get_template_context(self)
         template_context["form_instance"] = self.request_form_instance
 
@@ -39,14 +38,12 @@ class FormView(RedirectView, TemplateView):
         """
         Get the form class.
         """
-
         return self.form
 
     def get_form_instance(self) -> wtforms.Form:
         """
         Get the form instance for GET and POST requests.
         """
-
         form = self.get_form()
 
         if flask.request.method == "POST":
@@ -58,7 +55,6 @@ class FormView(RedirectView, TemplateView):
         """
         Validate the form instance with its submitted data.
         """
-
         return self.request_form_instance.validate()
 
     def dispatch_valid_form_request(self) -> None:
@@ -73,7 +69,6 @@ class FormView(RedirectView, TemplateView):
         Base subclasses can implement this method with custom behavior
         run before or after behavior implemented by view subclasses.
         """
-
         self.dispatch_valid_form_request()
 
         return RedirectView.dispatch_request(self)
@@ -90,7 +85,6 @@ class FormView(RedirectView, TemplateView):
         Base subclasses can implement this method with custom behavior
         run before or after behavior implemented by view subclasses.
         """
-
         self.dispatch_invalid_form_request()
 
         return TemplateView.dispatch_request(self)
@@ -100,7 +94,6 @@ class FormView(RedirectView, TemplateView):
         Render the form template for a GET request,
         and process the form data for a POST request.
         """
-
         self.request_form_instance = self.get_form_instance()
 
         # Process a request with submitted form data.

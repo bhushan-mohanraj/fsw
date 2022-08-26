@@ -39,7 +39,6 @@ class ModelInstanceViewMixin(ModelViewMixin):
         """
         Get the model instances.
         """
-
         raise NotImplementedError
 
 
@@ -57,7 +56,6 @@ class OneModelInstanceViewMixin(ModelViewMixin):
         """
         Get the model instance.
         """
-
         raise NotImplementedError
 
 
@@ -70,7 +68,6 @@ class ReadModelView(ModelInstanceViewMixin, TemplateView):
         """
         Add the model instances to the template context.
         """
-
         template_context = TemplateView.get_template_context(self)
         template_context["model_instances"] = self.request_model_instances
 
@@ -80,7 +77,6 @@ class ReadModelView(ModelInstanceViewMixin, TemplateView):
         """
         Get the model instances and dispatch the request.
         """
-
         self.request_model_instances = self.get_model_instances()
 
         return TemplateView.dispatch_request(self)
@@ -95,7 +91,6 @@ class ReadOneModelView(OneModelInstanceViewMixin, TemplateView):
         """
         Add the model instance to the template context.
         """
-
         template_context = TemplateView.get_template_context(self)
         template_context["model_instance"] = self.request_model_instance
 
@@ -105,7 +100,6 @@ class ReadOneModelView(OneModelInstanceViewMixin, TemplateView):
         """
         Get the model instance and dispatch the request.
         """
-
         self.request_model_instance = self.get_model_instance()
 
         return TemplateView.dispatch_request(self)
@@ -120,14 +114,12 @@ class CreateModelView(OneModelInstanceViewMixin, FormView):
         """
         Create a new instance of the model class.
         """
-
         return self.model()
 
     def _dispatch_valid_form_request(self):
         """
         Internally process a request with valid form data.
         """
-
         self.request_model_instance = self.get_model_instance()
         self.request_form_instance.populate_obj(self.request_model_instance)
 
@@ -148,7 +140,6 @@ class UpdateModelView(OneModelInstanceViewMixin, FormView):
         """
         Add the model instance to the template context.
         """
-
         template_context = TemplateView.get_template_context(self)
         template_context["model_instance"] = self.request_model_instance
 
@@ -158,7 +149,6 @@ class UpdateModelView(OneModelInstanceViewMixin, FormView):
         """
         Get the form instance for GET and POST requests.
         """
-
         form = self.get_form()
 
         if flask.request.method == "POST":
@@ -170,7 +160,6 @@ class UpdateModelView(OneModelInstanceViewMixin, FormView):
         """
         Internally process a request with valid form data.
         """
-
         self.request_form_instance.populate_obj(self.request_model_instance)
 
         self.dispatch_valid_form_request()
@@ -184,7 +173,6 @@ class UpdateModelView(OneModelInstanceViewMixin, FormView):
         """
         Get the model instance and dispatch the request.
         """
-
         self.request_model_instance = self.get_model_instance()
 
         return FormView.dispatch_request(self)
@@ -199,7 +187,6 @@ class DeleteModelView(OneModelInstanceViewMixin, RedirectView):
         """
         Delete the model instance and redirect to the given URL.
         """
-
         # TODO: Consider adding a `delete` method to the model,
         # and call that method rather than deleting from the database.
         self.request_model_instance = self.get_model_instance()
