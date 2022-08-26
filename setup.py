@@ -1,6 +1,6 @@
-import setuptools
 import pathlib
 
+import setuptools
 
 readme_path = pathlib.Path(__file__).parent.resolve() / "README.md"
 
