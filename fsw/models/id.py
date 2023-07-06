@@ -2,7 +2,7 @@
 A mixin that adds an ID column to a model.
 """
 
-import sqlalchemy
+import sqlalchemy.orm
 
 
 class IDModelMixin:

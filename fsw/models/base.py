@@ -2,7 +2,7 @@
 Base classes for the model mixins.
 """
 
-import sqlalchemy
+import sqlalchemy.orm
 
 
 class DatabaseSessionModelMixin:

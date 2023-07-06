@@ -5,7 +5,7 @@ that record when a model instance was created, last updated, or deleted.
 
 import datetime
 
-import sqlalchemy
+import sqlalchemy.orm
 
 from fsw.models.base import DatabaseSessionModelMixin
 
