@@ -7,9 +7,9 @@ import typing
 import sqlalchemy
 import wtforms
 
-TIME_FORMAT = "%H:%M"
-DATE_FORMAT = "%Y-%m-%d"
-DATETIME_LOCAL_FORMAT = "%Y-%m-%dT%H:%M"
+_HTML_TIME_FORMAT = "%H:%M"
+_HTML_DATE_FORMAT = "%Y-%m-%d"
+_HTML_DATETIME_LOCAL_FORMAT = "%Y-%m-%dT%H:%M:%S"
 
 
 _COLUMN_FIELD_TYPES = {
@@ -57,11 +57,14 @@ def _get_column_field_kwargs(column) -> dict:
     if type(column.type) is sqlalchemy.types.String:
         field_kwargs["validators"] += [wtforms.validators.Length(max=column.type.length)]
     elif type(column.type) is sqlalchemy.types.DateTime:
-        field_kwargs["format"] = DATETIME_LOCAL_FORMAT
+        field_kwargs["format"] = _HTML_DATETIME_LOCAL_FORMAT
+
     elif type(column.type) is sqlalchemy.types.Date:
-        field_kwargs["format"] = DATE_FORMAT
+        field_kwargs["format"] = _HTML_DATE_FORMAT
+
     elif type(column.type) is sqlalchemy.types.Time:
-        field_kwargs["format"] = TIME_FORMAT
+        field_kwargs["format"] = _HTML_TIME_FORMAT
+
     elif type(column.type) is sqlalchemy.types.Enum:
         field_kwargs["choices"] = [
             (choice, choice.title()) for choice in column.type.enums
