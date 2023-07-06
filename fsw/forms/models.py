@@ -23,9 +23,9 @@ _COLUMN_FIELD_TYPES = {
 }
 
 
-def _column_field_type(column) -> type:
+def _get_column_field_type(column) -> type:
     """
-    The field type for constructing a WTForms field from an SQLAlchemy column.
+    Get the WTForms field type corresponding to an SQLAlchemy column.
     """
 
     try:
@@ -38,9 +38,10 @@ def _column_field_type(column) -> type:
         )
 
 
-def _column_field_kwargs(column) -> dict:
+def _get_column_field_kwargs(column) -> dict:
     """
-    Keyword arguments for constructing a WTForms field from an SQLAlchemy column.
+    Get the keyword arguments
+    for constructing a WTForms field corresponding to an SQLAlchemy column.
     """
     field_kwargs = {
         "label": column.name.replace("_", " ").title(),
@@ -95,8 +96,8 @@ class ModelFormMixin:
             if name not in fields:
                 continue
 
-            field_type = _column_field_type(column)
-            field_kwargs = _column_field_kwargs(column)
+            field_type = _get_column_field_type(column)
+            field_kwargs = _get_column_field_kwargs(column)
 
             setattr(ModelForm, name, field_type(**field_kwargs))
 
