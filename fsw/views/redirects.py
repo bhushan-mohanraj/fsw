@@ -11,7 +11,7 @@ class RedirectView(flask.views.View):
     A view that redirects to a URL.
     """
 
-    # The URL to redirect to. For views, use `flask.url_for`.
+    # The URL to which to redirect. For views, use `flask.url_for`.
     redirect_url: str
 
     def get_redirect_url(self) -> str:
