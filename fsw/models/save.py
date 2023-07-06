@@ -12,7 +12,7 @@ class SaveModelMixin(DatabaseSessionModelMixin):
 
     def save(self) -> None:
         """
-        Commit the changes to the model instance to the database.
+        Commit changes made to this instance to the database.
         """
 
         self.database_session.add(self)
