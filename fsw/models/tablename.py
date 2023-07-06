@@ -12,5 +12,6 @@ class ClassNameModelMixin:
     """
 
     @sqlalchemy.orm.declared_attr.directive
+    @classmethod
     def __tablename__(cls) -> str:
         return cls.__name__
