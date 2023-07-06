@@ -79,7 +79,7 @@ class ModelFormMixin:
     """
 
     @classmethod
-    def model_form(cls, model, fields: list[str]):
+    def model_form(cls, model, field_names: list[str]):
         """
         Create a WTForms form class from an SQLAlchemy model class.
 
@@ -96,7 +96,7 @@ class ModelFormMixin:
         for column in columns:
             name = column.name
 
-            if name not in fields:
+            if name not in field_names:
                 continue
 
             field_type = _get_column_field_type(column)
