@@ -1,4 +1,5 @@
 # FSW
 
-FSW is a collection of guides and modular tools
-for Flask, SQLAlchemy, and WTForms.
+FSW is a collection of tools
+for using Flask, SQLAlchemy, and WTForms together.
+
