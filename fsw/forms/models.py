@@ -46,6 +46,7 @@ def _get_column_field_kwargs(column) -> dict:
     field_kwargs = {
         "label": column.name.replace("_", " ").title(),
         "description": getattr(column, "doc", None),
+        "default": getattr(column, "default", None),
         "validators": [],
     }
 
