@@ -16,7 +16,7 @@ DATETIME_LOCAL_FORMAT = "%Y-%m-%dT%H:%M"
 
 
 # The WTForms field types corresponding to the SQLAlchemy column types.
-_column_field_types = {
+_COLUMN_FIELD_TYPES = {
     sqlalchemy.types.String: wtforms.fields.StringField,
     sqlalchemy.types.Integer: wtforms.fields.IntegerField,
     sqlalchemy.types.DateTime: wtforms.fields.DateTimeLocalField,
@@ -33,7 +33,7 @@ def _column_field_type(column) -> type:
     """
 
     try:
-        return _column_field_types[type(column.type)]
+        return _COLUMN_FIELD_TYPES[type(column.type)]
 
     except KeyError:
         raise KeyError(
