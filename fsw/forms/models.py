@@ -79,11 +79,12 @@ class ModelFormMixin:
     """
 
     @classmethod
-    def model_form(cls, model, field_names: list[str]):
+    def get_model_form(cls, model, field_names: list[str]):
         """
-        Create a WTForms form class from an SQLAlchemy model class.
+        Create a WTForms form from an SQLAlchemy model.
 
-        The `fields` parameter should specify the form fields to be created from the model.
+        The `field_names` parameter should specify the names
+        of the columns to convert into form fields.
         """
 
         class ModelForm(cls):
