@@ -7,15 +7,11 @@ import typing
 import sqlalchemy
 import wtforms
 
-# The output formats for the HTML date and time fields.
-# WTForms provides inconsistent default values,
-# so these values are passed when creating the fields.
 TIME_FORMAT = "%H:%M"
 DATE_FORMAT = "%Y-%m-%d"
 DATETIME_LOCAL_FORMAT = "%Y-%m-%dT%H:%M"
 
 
-# The WTForms field types corresponding to the SQLAlchemy column types.
 _COLUMN_FIELD_TYPES = {
     sqlalchemy.types.String: wtforms.fields.StringField,
     sqlalchemy.types.Integer: wtforms.fields.IntegerField,
@@ -46,21 +42,17 @@ def _column_field_kwargs(column) -> dict:
     """
     Keyword arguments for constructing a WTForms field from an SQLAlchemy column.
     """
-
-    # The label, description, and validators for the field.
     field_kwargs = {
         "label": column.name.replace("_", " ").title(),
         "description": column.doc if column.doc else "",
         "validators": [],
     }
 
-    # The optional or input required validator.
     if column.nullable:
         field_kwargs["validators"] += [wtforms.validators.Optional()]
     else:
         field_kwargs["validators"] += [wtforms.validators.InputRequired()]
 
-    # Keyword arguments for specific column types.
     if type(column.type) is sqlalchemy.types.String:
         field_kwargs["validators"] += [wtforms.validators.Length(max=column.type.length)]
     elif type(column.type) is sqlalchemy.types.DateTime:
