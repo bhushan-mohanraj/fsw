@@ -2,9 +2,10 @@
 Convert SQLAlchemy models to WTForms forms.
 """
 
-from sqlalchemy import inspect, types
-from wtforms import fields, validators
-from wtforms.fields import html5
+import typing
+
+import sqlalchemy
+import wtforms
 
 # The output formats for the HTML date and time fields.
 # WTForms provides inconsistent default values,
@@ -16,13 +17,13 @@ DATETIME_LOCAL_FORMAT = "%Y-%m-%dT%H:%M"
 
 # The WTForms field types corresponding to the SQLAlchemy column types.
 _column_field_types = {
-    types.String: fields.StringField,
-    types.Integer: fields.IntegerField,
-    types.DateTime: html5.DateTimeLocalField,
-    types.Date: html5.DateField,
-    types.Time: html5.TimeField,
-    types.Boolean: fields.BooleanField,
-    types.Enum: fields.SelectField,
+    sqlalchemy.types.String: wtforms.fields.StringField,
+    sqlalchemy.types.Integer: wtforms.fields.IntegerField,
+    sqlalchemy.types.DateTime: wtforms.fields.DateTimeLocalField,
+    sqlalchemy.types.Date: wtforms.fields.DateField,
+    sqlalchemy.types.Time: wtforms.fields.TimeField,
+    sqlalchemy.types.Boolean: wtforms.fields.BooleanField,
+    sqlalchemy.types.Enum: wtforms.fields.SelectField,
 }
 
 
@@ -55,20 +56,20 @@ def _column_field_kwargs(column) -> dict:
 
     # The optional or input required validator.
     if column.nullable:
-        field_kwargs["validators"] += [validators.Optional()]
+        field_kwargs["validators"] += [wtforms.validators.Optional()]
     else:
-        field_kwargs["validators"] += [validators.InputRequired()]
+        field_kwargs["validators"] += [wtforms.validators.InputRequired()]
 
     # Keyword arguments for specific column types.
-    if type(column.type) == types.String:
-        field_kwargs["validators"] += [validators.Length(max=column.type.length)]
-    elif type(column.type) == types.DateTime:
+    if type(column.type) is sqlalchemy.types.String:
+        field_kwargs["validators"] += [wtforms.validators.Length(max=column.type.length)]
+    elif type(column.type) is sqlalchemy.types.DateTime:
         field_kwargs["format"] = DATETIME_LOCAL_FORMAT
-    elif type(column.type) == types.Date:
+    elif type(column.type) is sqlalchemy.types.Date:
         field_kwargs["format"] = DATE_FORMAT
-    elif type(column.type) == types.Time:
+    elif type(column.type) is sqlalchemy.types.Time:
         field_kwargs["format"] = TIME_FORMAT
-    elif type(column.type) == types.Enum:
+    elif type(column.type) is sqlalchemy.types.Enum:
         field_kwargs["choices"] = [
             (choice, choice.title()) for choice in column.type.enums
         ]
@@ -94,7 +95,7 @@ class ModelFormMixin:
             The form class created from the model.
             """
 
-        columns = inspect(model).c
+        columns = sqlalchemy.inspect(model).c
 
         for column in columns:
             name = column.name
