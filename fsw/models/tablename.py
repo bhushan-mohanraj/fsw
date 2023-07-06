@@ -10,6 +10,6 @@ class ClassNameModelMixin:
     A mixin that sets the database table name to the class name of a model.
     """
 
-    @sqlalchemy.orm.declared_attr
-    def __tablename__(cls):
+    @sqlalchemy.orm.declared_attr.directive
+    def __tablename__(cls) -> str:
         return cls.__name__

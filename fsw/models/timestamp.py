@@ -4,6 +4,7 @@ that record when a model instance was created, last updated, or deleted.
 """
 
 import datetime
+import typing
 
 import sqlalchemy.orm
 
@@ -18,10 +19,8 @@ class CreateTimestampModelMixin:
     All times are stored in UTC.
     """
 
-    created_at = sqlalchemy.Column(
-        sqlalchemy.types.DateTime,
+    created_at: sqlalchemy.orm.Mapped[datetime.datetime] = sqlalchemy.orm.mapped_column(
         default=datetime.datetime.utcnow,
-        nullable=False,
     )
 
 
@@ -33,11 +32,9 @@ class UpdateTimestampModelMixin:
     All times are stored in UTC.
     """
 
-    updated_at = sqlalchemy.Column(
-        sqlalchemy.types.DateTime,
+    updated_at: sqlalchemy.orm.Mapped[datetime.datetime] = sqlalchemy.orm.mapped_column(
         default=datetime.datetime.utcnow,
         onupdate=datetime.datetime.utcnow,
-        nullable=False,
     )
 
 
@@ -56,7 +53,7 @@ class DeleteTimestampModelMixin(DatabaseSessionModelMixin):
     All times are stored in UTC.
     """
 
-    deleted_at = sqlalchemy.Column(sqlalchemy.types.DateTime)
+    deleted_at: sqlalchemy.orm.Mapped[typing.Optional[datetime.datetime]]
 
     def delete(self) -> None:
         """

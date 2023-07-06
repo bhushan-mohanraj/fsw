@@ -10,4 +10,4 @@ class IDModelMixin:
     A mixin that adds an integer, primary-key ID column to a model.
     """
 
-    id = sqlalchemy.Column(sqlalchemy.types.Integer, primary_key=True)
+    id: sqlalchemy.orm.Mapped[int] = sqlalchemy.orm.mapped_column(primary_key=True)
