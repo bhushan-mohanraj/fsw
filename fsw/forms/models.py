@@ -102,7 +102,7 @@ class ModelFormMixin:
         sqlalchemy.types.String: StringColumnFieldConverter(),
         sqlalchemy.types.Integer: IntegerColumnFieldConverter(),
         sqlalchemy.types.DateTime: DateTimeColumnFieldConverter(),
-        sqlalchemy.types.Date: DateTimeColumnFieldConverter(),
+        sqlalchemy.types.Date: DateColumnFieldConverter(),
         sqlalchemy.types.Time: TimeColumnFieldConverter(),
         sqlalchemy.types.Boolean: BooleanColumnFieldConverter(),
         sqlalchemy.types.Enum: EnumColumnFieldConverter(),
