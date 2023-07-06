@@ -136,7 +136,7 @@ class ModelFormMixin:
                 converter = cls.converters[type(column.type)]
             except KeyError:
                 raise KeyError(
-                    "No converter exists"
+                    "No converter currently exists"
                     f" for SQLAlchemy columns of the type `{type(column.type)}`."
                 )
 
