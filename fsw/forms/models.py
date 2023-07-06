@@ -1,5 +1,5 @@
 """
-Convert SQLAlchemy model classes to WTForms form classes.
+Convert SQLAlchemy models to WTForms forms.
 """
 
 from sqlalchemy import inspect, types
