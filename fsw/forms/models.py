@@ -31,12 +31,14 @@ def _column_field_type(column) -> type:
     The field type for constructing a WTForms field from an SQLAlchemy column.
     """
 
-    if type(column.type) in _column_field_types:
+    try:
         return _column_field_types[type(column.type)]
 
-    raise RuntimeError(
-        f"{type(column.type)} columns cannot be converted to form fields."
-    )
+    except KeyError:
+        raise KeyError(
+            f"SQLAlchemy columns of the type `{type(column.type).__name__}`"
+            "cannot currently be converted in WTForms fields."
+        )
 
 
 def _column_field_kwargs(column) -> dict:
