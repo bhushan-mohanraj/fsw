@@ -55,7 +55,9 @@ def _get_column_field_kwargs(column) -> dict:
         field_kwargs["validators"] += [wtforms.validators.InputRequired()]
 
     if type(column.type) is sqlalchemy.types.String:
-        field_kwargs["validators"] += [wtforms.validators.Length(max=column.type.length)]
+        if column.type.length:
+            field_kwargs["validators"].append(wtforms.validators.Length(max=column.type.length))
+
     elif type(column.type) is sqlalchemy.types.DateTime:
         field_kwargs["format"] = _HTML_DATETIME_LOCAL_FORMAT
 
