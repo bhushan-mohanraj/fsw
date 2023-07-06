@@ -45,7 +45,7 @@ def _get_column_field_kwargs(column) -> dict:
     """
     field_kwargs = {
         "label": column.name.replace("_", " ").title(),
-        "description": column.doc if column.doc else "",
+        "description": getattr(column, "doc", None),
         "validators": [],
     }
 
