@@ -50,10 +50,9 @@ def _get_column_field_kwargs(column) -> dict:
         "validators": [],
     }
 
-    if column.nullable:
-        field_kwargs["validators"] += [wtforms.validators.Optional()]
-    else:
-        field_kwargs["validators"] += [wtforms.validators.InputRequired()]
+    field_kwargs["validators"].append(
+        wtforms.validators.Optional() if column.nullable else wtforms.validators.InputRequired()
+    )
 
     if type(column.type) is sqlalchemy.types.String:
         if column.type.length:
