@@ -68,9 +68,7 @@ def _get_column_field_kwargs(column) -> dict:
         field_kwargs["format"] = _HTML_TIME_FORMAT
 
     elif type(column.type) is sqlalchemy.types.Enum:
-        field_kwargs["choices"] = [
-            (choice, choice.title()) for choice in column.type.enums
-        ]
+        field_kwargs["choices"] = [(choice, choice.title()) for choice in column.type.enums]
 
     return field_kwargs
 
