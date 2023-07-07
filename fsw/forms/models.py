@@ -109,7 +109,12 @@ class ModelFormMixin:
     }
 
     @classmethod
-    def get_model_form(cls, model, names: list[str]) -> FormType:
+    def get_model_form(
+        cls,
+        model,
+        names: list[str],
+        column_converters: dict[str, ColumnFieldConverter] = {},
+    ) -> FormType:
         """
         Create a WTForms form from an SQLAlchemy model.
         """
@@ -139,6 +144,10 @@ class ModelFormMixin:
                     "No converter currently exists"
                     f" for SQLAlchemy columns of the type `{type(column.type)}`."
                 )
+
+            # Check whether this column has a custom converter.
+            if name in column_converters:
+                converter = column_converters[name]
 
             field_type = converter.get_field_type(column)
             field_kwargs = converter.get_field_kwargs(column)
