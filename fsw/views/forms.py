@@ -93,7 +93,7 @@ class FormView(RedirectView, TemplateView):
         Render the form template for a GET request,
         and process the form data for a POST request.
         """
-        self.request_form= self.get_form()
+        self.request_form = self.get_form()
 
         # Process a request with submitted form data.
         if flask.request.method == "POST":
