@@ -121,7 +121,7 @@ class CreateModelView(OneModelInstanceViewMixin, FormView):
         Internally process a request with valid form data.
         """
         self.request_model_instance = self.get_model_instance()
-        self.request_form_instance.populate_obj(self.request_model_instance)
+        self.request_form.populate_obj(self.request_model_instance)
 
         self.dispatch_valid_form_request()
 
@@ -145,22 +145,22 @@ class UpdateModelView(OneModelInstanceViewMixin, FormView):
 
         return template_context
 
-    def get_form_instance(self) -> wtforms.Form:
+    def get_form(self) -> wtforms.Form:
         """
-        Get the form instance for GET and POST requests.
+        Get the form for GET and POST requests.
         """
-        form = self.get_form()
+        form_class = self.get_form_class()
 
         if flask.request.method == "POST":
-            return form(formdata=flask.request.form)
+            return form_class(formdata=flask.request.form)
 
-        return form(obj=self.request_model_instance)
+        return form_class(obj=self.request_model_instance)
 
     def _dispatch_valid_form_request(self):
         """
         Internally process a request with valid form data.
         """
-        self.request_form_instance.populate_obj(self.request_model_instance)
+        self.request_form.populate_obj(self.request_model_instance)
 
         self.dispatch_valid_form_request()
 

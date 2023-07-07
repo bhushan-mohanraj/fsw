@@ -17,45 +17,44 @@ class FormView(RedirectView, TemplateView):
     A view that renders and processes a form.
     """
 
-    # The form class.
-    form: typing.Type[wtforms.Form]
+    form_class: typing.Type[wtforms.Form]
 
     # The form instance for the current request.
-    # When rendering templates with Jinja, the form instance
-    # is accessible as the context variable `form_instance`.
-    request_form_instance: wtforms.Form
+    # When rendering templates with Jinja, the form
+    # is accessible as the context variable `form`.
+    request_form: wtforms.Form
 
     def get_template_context(self) -> dict:
         """
         Add the form instance to the template context.
         """
         template_context = TemplateView.get_template_context(self)
-        template_context["form_instance"] = self.request_form_instance
+        template_context["form"] = self.request_form
 
         return template_context
 
-    def get_form(self) -> typing.Type[wtforms.Form]:
+    def get_form_class(self) -> typing.Type[wtforms.Form]:
         """
         Get the form class.
         """
-        return self.form
+        return self.form_class
 
-    def get_form_instance(self) -> wtforms.Form:
+    def get_form(self) -> wtforms.Form:
         """
-        Get the form instance for GET and POST requests.
+        Get the form for GET and POST requests.
         """
-        form = self.get_form()
+        form_class = self.get_form_class()
 
         if flask.request.method == "POST":
-            return form(flask.request.form)
+            return form_class(flask.request.form)
 
-        return form()
+        return form_class()
 
-    def validate_form_instance(self) -> bool:
+    def validate_form(self) -> bool:
         """
-        Validate the form instance with its submitted data.
+        Validate the form with its submitted data.
         """
-        return self.request_form_instance.validate()
+        return self.request_form.validate()
 
     def dispatch_valid_form_request(self) -> None:
         """
@@ -94,12 +93,12 @@ class FormView(RedirectView, TemplateView):
         Render the form template for a GET request,
         and process the form data for a POST request.
         """
-        self.request_form_instance = self.get_form_instance()
+        self.request_form= self.get_form()
 
         # Process a request with submitted form data.
         if flask.request.method == "POST":
             # Dispatch a request with valid form data.
-            if self.validate_form_instance():
+            if self.validate_form():
                 return self._dispatch_valid_form_request()
 
             # Dispatch a request with invalid form data.
