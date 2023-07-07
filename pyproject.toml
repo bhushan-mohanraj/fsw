@@ -8,9 +8,9 @@ authors = [
 ]
 requires-python = ">=3.8"
 dependencies = [
-    "Flask>=2,<3",
-    "SQLAlchemy>=2,<3",
-    "WTForms>=3,<4",
+    "Flask>=2.3,<3",
+    "SQLAlchemy>=2.0,<3",
+    "WTForms>=3.0,<4",
 ]
 
 [project.urls]
