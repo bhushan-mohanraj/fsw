@@ -1,5 +1,11 @@
 """
 Classes and helpers for Flask views.
+
+Most FSW view classes
+are built under the assumption
+that they are instantiated for each request.
+Therefore, the `init_every_request` argument of `View.as_view`
+should never be `False` for FSW view classes.
 """
 
 from fsw.views.forms import FormView as FormView
