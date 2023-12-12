@@ -61,5 +61,5 @@ class DeleteTimestampModelMixin(DatabaseSessionModelMixin):
         to indicate that the model instance is deleted.
         """
 
-        self.deleted_at = datetime.datetime.utcnow()
+        self.deleted_at = datetime.datetime.now(datetime.UTC)
         self.database_session.commit()
