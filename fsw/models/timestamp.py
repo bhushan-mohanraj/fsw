@@ -48,7 +48,7 @@ class DeleteTimestampModelMixin(DatabaseSessionModelMixin):
     use `model_instance.deleted_at is None`.
 
     To query the database for model instances that are not deleted,
-    execute `sqlalchemy.select(Model).where(Model.deleted_at != None)`.
+    execute `sqlalchemy.select(Model).where(Model.deleted_at == None)`.
 
     All times are stored in UTC.
     """
